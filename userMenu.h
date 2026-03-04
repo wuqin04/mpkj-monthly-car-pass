@@ -1,5 +1,7 @@
 #include <iostream>
 #include <limits>
+#include "personalInfoMenu.h"
+#include "passRenewalMenu.h"
 using namespace std;
 
 void userMenu() {
@@ -29,10 +31,10 @@ void userMenu() {
         system("cls");
         switch (choice) {
             case 1:
-                cout << "entering personalInfoMenu()";
+                personalInfoMenu();
                 break;
             case 2:
-                cout << "entering passRenewalMenu()";
+                passRenewalMenu();
                 break;
             case 3:
                 cout << "entering viewStatusMenu()";
