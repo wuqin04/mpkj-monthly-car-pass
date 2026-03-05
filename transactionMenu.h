@@ -10,7 +10,7 @@ void transactionMenu() {
 	int choice;
 	
 	cout << "====================================================================\n";
-	cout << "|                       Transaction History                        |\n";
+	cout << "|                       TRANSACTION HISTORY                        |\n";
 	cout << "====================================================================\n";
 	cout << "Transaction History here\n";
 	cout << "====================================================================\n";
