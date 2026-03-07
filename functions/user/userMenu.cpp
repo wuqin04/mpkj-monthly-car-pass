@@ -1,7 +1,12 @@
 #include <iostream>
 #include <limits>
-#include "personalInfoMenu.h"
-#include "passRenewalMenu.h"
+#include "user/userMenu.h"
+#include "user/personalInfoMenu.h"
+#include "user/passRenewalMenu.h"
+#include "user/viewStatusMenu.h"
+#include "user/transactionMenu.h"
+#include "user/paymentMenu.h"
+
 using namespace std;
 
 void userMenu() {
@@ -37,13 +42,13 @@ void userMenu() {
                 passRenewalMenu();
                 break;
             case 3:
-                cout << "entering viewStatusMenu()";
+                viewStatusMenu();
                 break;
             case 4:
-                cout << "entering paymentMenu()";
+                transactionMenu();
                 break;
             case 5:
-                cout << "exiting program";
+                cout << "Bye!";
                 break;
             default:
                 cout << "Invalid input, try again.\n";

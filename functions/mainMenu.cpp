@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
-#include "userMenu.h"
+#include "mainMenu.h"
+#include "user/userMenu.h"
 using namespace std;
 
 
@@ -34,4 +35,3 @@ void mainMenu() {
 		userMenu();
 	}
 }
-
