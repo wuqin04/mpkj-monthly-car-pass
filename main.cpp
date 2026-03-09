@@ -1,6 +1,6 @@
 #include <iostream>
-#include "mainMenu.h"
+#include "personalInfoMenu.h"
 
 int main() {
-	mainMenu();
+	personalInfoMenu();
 }
