@@ -3,6 +3,9 @@
 using namespace std;
 
 void userInfo(){
+	
+	int choice;
+	
 	cout << "===========================================\n";
     cout << "                USER INFOMATION            \n";
     cout << "===========================================\n";
@@ -19,7 +22,7 @@ void userInfo(){
 	cout << "1. Edit Information\n";
     cout << "2. Back to Main Menu\n";
     cout << "Choose option: ";
-	
+	cin >> choice
 }
 
 //void editInfo(){
