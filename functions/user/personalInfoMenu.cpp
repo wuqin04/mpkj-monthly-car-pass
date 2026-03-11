@@ -3,9 +3,6 @@
 using namespace std;
 
 void userInfo(){
-	
-	int choice;
-	
 	cout << "===========================================\n";
     cout << "                USER INFOMATION            \n";
     cout << "===========================================\n";
