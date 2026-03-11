@@ -4,8 +4,5 @@
 #include <iostream>
 using namespace std;
 
-void passRenewalMenu(void){
-	cout << "Hi";
-}
 
 #endif
