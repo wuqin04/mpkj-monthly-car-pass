@@ -39,7 +39,7 @@ void userMenu() {
                 userInfo();
                 break;
             case 2:
-                passRenewalMenu();
+                //passRenewalMenu();
                 break;
             case 3:
                 viewStatusMenu();

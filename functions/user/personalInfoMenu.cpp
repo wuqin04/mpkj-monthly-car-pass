@@ -1,6 +1,10 @@
 #include <iostream>
 #include <iomanip>
+
+#include "user/userMenu.h"
 using namespace std;
+
+std::string name = "";
 
 void userInfo(){
     int choice;
@@ -21,6 +25,14 @@ void userInfo(){
     cout << "2. Back to Main Menu\n";
     cout << "Choose option: ";
 	cin >> choice;
+
+    if (choice == 2) {
+        userMenu();
+    }
+}
+
+bool hasName() {
+    return name != "";
 }
 
 //void editInfo(){
