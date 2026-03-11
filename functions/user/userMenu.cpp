@@ -36,7 +36,7 @@ void userMenu() {
         system("cls");
         switch (choice) {
             case 1:
-                personalInfoMenu();
+                userInfo();
                 break;
             case 2:
                 passRenewalMenu();
