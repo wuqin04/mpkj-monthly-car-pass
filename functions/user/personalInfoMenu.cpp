@@ -7,9 +7,7 @@ using namespace std;
 std::string name = "";
 
 void userInfo(){
-	
-	int choice;
-	
+    int choice;
 	cout << "===========================================\n";
     cout << "                USER INFOMATION            \n";
     cout << "===========================================\n";
