@@ -23,7 +23,7 @@ void userMenu() {
         cout << "|(5) exit program                         |\n";
         cout << "===========================================\n";
 
-        cout << "Choose an action (1-5):";
+        cout << "Choose an action (1-5): ";
         int choice = 0;
         if (!(cin >> choice)) {
             system("cls");
