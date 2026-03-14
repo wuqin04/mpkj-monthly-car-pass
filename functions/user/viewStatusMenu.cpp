@@ -2,11 +2,12 @@
 #include <iomanip>
 #include <limits>
 #include "user/userMenu.h"
+#include "user/userInfoMenu.h"
 #include "user/paymentMenu.h"
 
 using namespace std;
 
-void viewStatusMenu() {
+void viewStatusMenu(User &user) {
 	while (true) {
 		int choice;
 		bool applicationStatus = true;
@@ -20,9 +21,9 @@ void viewStatusMenu() {
 
 		cout << "===========================================\n";
 		if (applicationStatus ==true)
-			cout << "|(2) show due payment amount              |\n";
+			cout << "|(1) show due payment amount              |\n";
 		if (applicationStatus == false)
-			cout << "|(2) show reason for rejection            |\n";
+			cout << "|(1) show reason for rejection            |\n";
 			
 		cout << "|(2) return to main menu                  |\n";
 
@@ -45,7 +46,7 @@ void viewStatusMenu() {
 			userMenu();
 		}
 		else if (choice == 2 && applicationStatus == true) {
-			paymentMenu();
+			paymentMenu(user);
 		}
 		else if (choice == 2 && applicationStatus == false) {
 			cout << "reason";

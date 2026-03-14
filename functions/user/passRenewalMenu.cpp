@@ -1,5 +1,5 @@
 #include <iostream>
-#include "user/personalInfoMenu.h"
+#include "user/userInfoMenu.h"
 using namespace std;
 
 void passRenewalMenu(){

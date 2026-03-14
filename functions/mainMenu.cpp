@@ -2,6 +2,7 @@
 #include <string>
 #include "mainMenu.h"
 #include "user/userMenu.h"
+#include "user/userInfoMenu.h"
 using namespace std;
 
 

@@ -1,6 +1,6 @@
 #ifndef PAYMENT_MENU_H
 #define PAYMENT_MENU_H
 
-void paymentMenu();
+void paymentMenu(User &user);
 
 #endif

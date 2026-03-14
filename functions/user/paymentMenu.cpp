@@ -1,20 +1,21 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include "mainMenu.h"
 #include "user/userMenu.h"
-#include "user/personalInfoMenu.h"
+#include "user/userInfoMenu.h"
 
 using namespace std;
 
-void paymentMenu() {
+void paymentMenu(User &user) {
 	while(true){
 		int choice;
 
 		cout << "====================================================================\n";
 		cout << "|                           PAYMENT MENU                           |\n";
 		cout << "====================================================================\n";
-		cout << "ID: " << studentId << endl;
-		cout << "Name: " << name << endl;
+		cout << "ID: " << user.studentId << endl;
+		cout << "Name: " << user.name << endl;
 		cout << "Amount due: RM" << endl;
 		cout << "If there are any problems or if you wish to settle your payment,\n";
 		cout << "please proceed to the Department of Finance for assistance.\n";

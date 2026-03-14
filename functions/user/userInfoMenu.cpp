@@ -2,31 +2,25 @@
 #include <iomanip>
 #include <string>
 
+#include "user/userInfoMenu.h"
 #include "user/userMenu.h"
 using namespace std;
 
-extern string name = "";
-extern string studentId = "";
-extern string ic = "";
-extern string contact = "";
-extern string faculty = "";
-extern string carPlate = "";
-
-bool infoComplete = (name != "" && studentId != "" && ic != "" && contact != "" && faculty != "" && carPlate != "");
-
-void userInfo(){
+void User::userInfo(){
+    bool infoComplete = (this->name != "" && this->studentId != "" && this->ic != "" && this->contact != "" && this->faculty != "" && this->carPlate != "");
+    
     while(true){
         int choice;
 	    cout << "===========================================\n";
         cout << "                USER INFOMATION            \n";
         cout << "===========================================\n";
             
-        cout << "Name: " << name << endl;
-        cout << "Student ID: " << studentId << endl;
-        cout << "IC: " << ic << endl;
-        cout << "Contact Number: " << contact << endl;
-        cout << "Faculty: " << faculty << endl;
-        cout << "Car Plate Number: " << carPlate << endl;
+        cout << "Name: " << this->name << endl;
+        cout << "Student ID: " << this->studentId << endl;
+        cout << "IC: " << this->ic << endl;
+        cout << "Contact Number: " << this->contact << endl;
+        cout << "Faculty: " << this->faculty << endl;
+        cout << "Car Plate Number: " << this->carPlate << endl;
 
         cout << "===========================================\n";
         cout << "          Choose an action (1-2):          \n";
@@ -60,7 +54,7 @@ void userInfo(){
     }
 }
 
-void editInfo() {
+void User::editInfo() {
     while (true){
         int choice;
 
@@ -68,12 +62,12 @@ void editInfo() {
         cout << "    Information Editing\n";
         cout << "============================\n";
 
-        cout << "Name: " << name << endl;
-        cout << "Student ID: " << studentId << endl;
-        cout << "IC: " << ic << endl;
-        cout << "Contact Number: " << contact << endl;
-        cout << "Faculty: " << faculty << endl;
-        cout << "Car Plate Number: " << carPlate << endl;
+        cout << "Name: " << this->name << endl;
+        cout << "Student ID: " << this->studentId << endl;
+        cout << "IC: " << this->ic << endl;
+        cout << "Contact Number: " << this->contact << endl;
+        cout << "Faculty: " << this->faculty << endl;
+        cout << "Car Plate Number: " << this->carPlate << endl;
 
         cout << "=============================\n";
         cout << "     Choose an option :\n";
@@ -91,32 +85,32 @@ void editInfo() {
         switch(choice){
             case 1:
                 cout << "Enter name: ";
-                cin >> name;
+                cin >> this->name;
                 system("cls");
                 continue;;
             case 2:
                 cout << "Enter Student ID: ";
-                cin >> studentId;
+                cin >> this->studentId;
                 system("cls");
                 continue;
             case 3:
                 cout << "Enter IC: ";
-                cin >> ic;
+                cin >> this->ic;
                 system("cls");
                 continue;
             case 4:
                 cout << "Enter Contact Number: ";
-                cin >> contact;
+                cin >> this->contact;
                 system("cls");
                 continue;
             case 5:
                 cout << "Enter Faculty: ";
-                cin >> faculty;
+                cin >> this->faculty;
                 system("cls");
                 continue;
             case 6 : 
                 cout << "Enter Car Plate Number: ";
-                cin >> carPlate;
+                cin >> this->carPlate;
                 system("cls");
                 continue;
             case 7:
