@@ -5,6 +5,6 @@
 using namespace std;
 
 void userInfo();
-bool hasName();
+bool infoComplete();
 
 #endif
