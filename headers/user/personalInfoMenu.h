@@ -6,5 +6,6 @@ using namespace std;
 
 void userInfo();
 bool infoComplete();
+void editInfo();
 
 #endif

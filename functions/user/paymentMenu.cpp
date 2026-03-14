@@ -1,58 +1,41 @@
 #include <iostream>
 #include <iomanip>
-#include <limits>
+#include <string>
 #include "user/userMenu.h"
+#include "user/personalInfoMenu.h"
 
 using namespace std;
 
 void paymentMenu() {
-	bool isPaid = false;
-	int choice;
-	string id, name;
-	double payment = 0.0;
-	
-	while (true) {
-		
-		string paymentStatus = isPaid? "Received": "Pending";
+	while(true){
+		int choice;
 
-		cout << "===========================================\n";
-		cout << "               PAYMENT MENU                \n";
-		cout << "===========================================\n";
-
-		cout << "ID: " << id << endl;
+		cout << "====================================================================\n";
+		cout << "|                           PAYMENT MENU                           |\n";
+		cout << "====================================================================\n";
+		cout << "ID: " << studentId << endl;
 		cout << "Name: " << name << endl;
-		cout << "Amount due: RM" << fixed << setprecision(2)<< payment << endl;
-		cout << "Payment status: " << paymentStatus << endl;
+		cout << "Amount due: RM" << endl;
 		cout << "If there are any problems or if you wish to settle your payment,\n";
 		cout << "please proceed to the Department of Finance for assistance.\n";
-		cout << "===========================================\n";
-		cout << "|(1) Online Banking (FPX)                 |\n";
-		cout << "|(2) return to main menu                  |\n";
-		cout << "===========================================\n";
-		cout << "Choose an action (1-2): ";
-
-		if (!(cin >> choice)) {
-            system("cls");
-            cout << "invalid input, try again.\n";
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            continue;
-        }
-		
-		system("cls");
-		switch (choice) {
+		cout << "====================================================================\n";
+		cout << "|(1) return to user main menu                                      |\n";
+		cout << "====================================================================\n";
+		cout << "Enter the number for the action you wish to perform: ";
+		cin >> choice;
+	
+		switch (choice){
 			case 1:
-				cout << "Payment succeed.\n";
-				isPaid = true;
-				continue;
-			case 2:
+				system("cls");
 				userMenu();
 				break;
 			default:
-				cout << "Invalid input, try again.";
+				system("cls");
+				cin.clear();
+				cin.ignore();
+				cout << "Invalid input, please try again.\n";
 				continue;
 		}
-		
 		break;
-	}	
+	}
 }

@@ -1,14 +1,22 @@
-<<<<<<< HEAD
 #include <iostream>
+#include "user/personalInfoMenu.h"
 using namespace std;
 
 void passRenewalMenu(){
-	cout << "============================\n";
-	cout << "MONTHLY PASS STATUS\n";
-	cout << "============================\n";
-	
-}
-=======
-#include "user/personalInfoMenu.h"
+	while(true){
+		int choice;
 
->>>>>>> 31286d138bd52a5870f97c62f566c0c2cb708459
+		cout << "=============================\n";
+		cout << "     MONTHLY PASS STATUS\n";
+		cout << "=============================\n";
+
+		cout << "pass status here\n";
+
+		cout << "=============================\n";
+		cout << "1. Pass renewal application\n";
+		cout << "2. Back to user menu\n";
+		cout << "Choose an option: ";
+		cin >> choice;
+	}
+}
+
