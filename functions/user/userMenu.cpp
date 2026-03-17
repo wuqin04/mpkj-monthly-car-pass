@@ -1,13 +1,15 @@
 #include <iostream>
 #include <limits>
 #include "user/userMenu.h"
-#include "user/personalInfoMenu.h"
+#include "user/userInfoMenu.h"
 #include "user/passRenewalMenu.h"
 #include "user/viewStatusMenu.h"
 #include "user/transactionMenu.h"
 #include "user/paymentMenu.h"
 
 using namespace std;
+
+User user;
 
 void userMenu() {
     while (true) {
@@ -23,7 +25,7 @@ void userMenu() {
         cout << "|(5) exit program                         |\n";
         cout << "===========================================\n";
 
-        cout << "Choose an action (1-5):";
+        cout << "Choose an action (1-5): ";
         int choice = 0;
         if (!(cin >> choice)) {
             system("cls");
@@ -36,13 +38,13 @@ void userMenu() {
         system("cls");
         switch (choice) {
             case 1:
-                userInfo();
+                user.userInfo();
                 break;
             case 2:
-                //passRenewalMenu();
+                passRenewalMenu();
                 break;
             case 3:
-                viewStatusMenu();
+                viewStatusMenu(user);
                 break;
             case 4:
                 transactionMenu();
