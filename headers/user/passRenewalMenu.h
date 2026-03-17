@@ -1,9 +1,8 @@
-#ifndef PASS_RENEWAL_MENU_H
-#define PASS_RENEWAL_MENU_H
+#ifndef PASSRENEWALMENU_H
+#define PASSRENEWALMENU_H
 
-#include <iostream>
-using namespace std;
-
-void passRenewalMenu();
+void getPassStatus();
+void infoComplete(User &user)
+void passRenewalMenu(User &user);
 
 #endif

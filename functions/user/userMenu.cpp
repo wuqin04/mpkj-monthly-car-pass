@@ -41,7 +41,7 @@ void userMenu() {
                 user.userInfo();
                 break;
             case 2:
-                passRenewalMenu();
+                passRenewalMenu(user);
                 break;
             case 3:
                 viewStatusMenu(user);

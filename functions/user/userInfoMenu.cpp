@@ -12,7 +12,7 @@ void User::userInfo(){
     while(true){
         int choice;
 	    cout << "===========================================\n";
-        cout << "                USER INFOMATION            \n";
+        cout << "                USER INFORMATION           \n";
         cout << "===========================================\n";
             
         cout << "Name: " << this->name << endl;
@@ -41,7 +41,7 @@ void User::userInfo(){
                 break;
             case 2:
                 system("cls");
-                mainMenu();
+                userMenu();
                 break;
             default:
                 system("cls");
