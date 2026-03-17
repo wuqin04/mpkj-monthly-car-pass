@@ -8,9 +8,10 @@
 using namespace std;
 
 void viewStatusMenu(User &user) {
+	bool applicationStatus = true;
+	
 	while (true) {
 		int choice;
-		bool applicationStatus = true;
 		
 		cout << "===========================================\n";
 		cout << "            APPLICATION STATUS             \n";
