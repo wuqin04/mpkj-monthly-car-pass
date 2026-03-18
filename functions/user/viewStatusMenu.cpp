@@ -7,41 +7,39 @@
 
 using namespace std;
 
+bool applicationStatus = true; 
+
 void viewStatusMenu(User &user) {
-	bool applicationStatus = NULL;
-	
 	while (true) {
 		int choice;
 		
 		cout << "===========================================\n";
 		cout << "            APPLICATION STATUS             \n";
-		cout << "===========================================\n";
-
-		cin >> applicationStatus; // remove later
+		cout << "===========================================\n";	
 
 		if (applicationStatus == true){
 			cout << "\nYour application is approved\n\n";
-			}
+		}
 		else if (applicationStatus == false){
 			cout << "\nYour application is rejected\n\n";
-			}
+		}
 		else{
 			cout << "\nYour application is still pending for review\n\n";
-			}
+		}
 
 		cout << "===========================================\n";
 
 		if (applicationStatus == true){
 			cout << "|(1) show due payment amount              |\n";
 			cout << "|(2) return to main menu                  |\n";
-			}
+		}
 		else if (applicationStatus == false){
 			cout << "|(1) show reason for rejection            |\n";
 			cout << "|(2) return to main menu                  |\n";
-			}
+		}
 		else{
 			cout << "|(1) return to main menu                  |\n";
-			}
+		}
 		
 		cout << "===========================================\n";
 		cout << "Choose an action : ";
@@ -63,8 +61,8 @@ void viewStatusMenu(User &user) {
 						cin.ignore();
 						cout << "Invalid input, please try again.\n";
 						continue;
-				}
 			}
+		}
 		else if (applicationStatus == false){
 				switch (choice){
 					case 1:
@@ -86,7 +84,7 @@ void viewStatusMenu(User &user) {
 						cout << "Invalid input, please try again.\n";
 						continue;
 				}
-			}
+		}
 		else{
 				switch (choice){
 					case 1:
@@ -101,7 +99,7 @@ void viewStatusMenu(User &user) {
 						cout << "Invalid input, please try again.\n";
 						continue;
 				}
-			}
+		}
 		break;
 	}
 }	
