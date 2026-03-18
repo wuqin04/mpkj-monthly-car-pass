@@ -5,7 +5,6 @@
 #include "user/userInfoMenu.h"
 using namespace std;
 
-
 void mainMenu() {
 	const string adminLogin = "admin";
 	const string adminPass = "admin";
