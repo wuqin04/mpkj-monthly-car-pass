@@ -4,17 +4,18 @@
 #include "user/userMenu.h"
 #include "user/userInfoMenu.h"
 #include "user/paymentMenu.h"
+#include "user/passRenewalMenu.h"
 
 using namespace std;
 
-bool applicationStatus = true; 
+bool applicationStatus = false; 
 
 void viewStatusMenu(User &user) {
 	while (true) {
 		int choice;
 		
 		cout << "===========================================\n";
-		cout << "            APPLICATION STATUS             \n";
+		cout << "|           APPLICATION STATUS            |\n";
 		cout << "===========================================\n";	
 
 		if (applicationStatus == true){
@@ -35,14 +36,15 @@ void viewStatusMenu(User &user) {
 		}
 		else if (applicationStatus == false){
 			cout << "|(1) show reason for rejection            |\n";
-			cout << "|(2) return to main menu                  |\n";
+			cout << "|(2) reapply for car pass                 |\n";
+			cout << "|(3) return to main menu                  |\n";
 		}
 		else{
 			cout << "|(1) return to main menu                  |\n";
 		}
 		
 		cout << "===========================================\n";
-		cout << "Choose an action : ";
+		cout << "Choose an action: ";
 		cin >> choice;
 
 		if (applicationStatus == true){
@@ -67,13 +69,17 @@ void viewStatusMenu(User &user) {
 				switch (choice){
 					case 1:
 						system("cls");
-						cout << "===========================================\n";
-						cout << "Reason for rejection: \n\n";
-						cout << "Press ENTER to return\n";
-						cout << "===========================================\n";
+						cout << "===========================\n";
+						cout << "|  Reason for rejection:  |\n\n";
+						cout << "|  Press ENTER to return  |\n";
+						cout << "===========================\n";
 						system("pause");
 						continue;
 					case 2:
+						system("cls");
+						passRenewalMenu(user);
+						break;
+					case 3:
 						system("cls");
 						userMenu();
 						break;

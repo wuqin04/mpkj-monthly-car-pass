@@ -15,9 +15,9 @@ void mainMenu() {
 	string password = "";
 
 	cout << "===========================================\n";
-	cout << "                MAIN MENU                  \n";
+	cout << "|               MAIN MENU                 |\n";
 	cout << "===========================================\n";
-	cout << "Welcome to MPKJ Monthly Car Pass System.   \n";
+	cout << "| Welcome to MPKJ Monthly Car Pass System |\n";
 	cout << "===========================================\n";
 
 	cout << "Username: ";

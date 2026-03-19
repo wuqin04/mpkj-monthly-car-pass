@@ -37,18 +37,18 @@ void passRenewalMenu(User &user){
 	while(true){
 		int choice;
 
-		cout << "===========================================\n";
-		cout << "         MONTHLY PASS APPLICATION          \n";
-		cout << "===========================================\n";
+		cout << "=====================================================\n";
+		cout << "|              MONTHLY PASS APPLICATION             |\n";
+		cout << "=====================================================\n";
         getPassStatus();
 
-		cout << "===========================================\n";
-		cout << "(1) apply for monthly car pass\n";
-        cout << "(2) application status menu\n";
-		cout << "(3) update information\n";
-        cout << "(4) back to main menu\n";
-        cout << "===========================================\n";
-		cout << "Choose an action (1-4): ";       
+		cout << "=====================================================\n";
+		cout << "|(1) apply for monthly car pass                     |\n";
+        cout << "|(2) application status menu                        |\n";
+		cout << "|(3) update information                             |\n";
+        cout << "|(4) back to main menu                              |\n";
+        cout << "=====================================================\n";
+		cout << "Choose an action: ";       
 		cin >> choice;
 
 		switch(choice){
