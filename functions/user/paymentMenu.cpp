@@ -66,6 +66,7 @@ void paymentMenu(User &user) {
 					cout << "============================\n";
 					paymentMade = true;
 					system("pause");
+					system("cls");
 					continue;
 				case 2:
 					system("cls");
