@@ -14,7 +14,7 @@ User user;
 void userMenu() {
     while (true) {
         cout << "===========================================\n";
-        cout << "                USER MENU                  \n";
+        cout << "|               USER MENU                 |\n";
         cout << "===========================================\n";
 
         cout << "===========================================\n";
@@ -25,7 +25,7 @@ void userMenu() {
         cout << "|(5) exit program                         |\n";
         cout << "===========================================\n";
 
-        cout << "Choose an action (1-5): ";
+        cout << "Choose an action: ";
         int choice = 0;
         if (!(cin >> choice)) {
             system("cls");
