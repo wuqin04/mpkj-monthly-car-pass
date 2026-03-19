@@ -70,7 +70,7 @@ void viewStatusMenu(User &user) {
 					case 1:
 						system("cls");
 						cout << "===========================\n";
-						cout << "|  Reason for rejection:  |\n\n";
+						cout << "|  Reason for rejection:  |\n";
 						cout << "|  Press ENTER to return  |\n";
 						cout << "===========================\n";
 						system("pause");
