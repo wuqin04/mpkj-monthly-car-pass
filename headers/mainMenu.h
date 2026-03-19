@@ -3,4 +3,7 @@
 #include "user/userInfoMenu.h"
 
 void mainMenu();
+void createNewUser();
+void clearBuffer();
+
 #endif
