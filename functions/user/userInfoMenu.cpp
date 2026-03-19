@@ -73,12 +73,12 @@ void User::editInfo() {
         cout << "Car Plate Number: " << this->carPlate << endl;
 
         cout << "=============================\n";
-        cout << "1. edit Name                 \n";
-        cout << "2. edit Student ID           \n";
-        cout << "3. edit IC                   \n";
-        cout << "4. edit Contact Number       \n";
-        cout << "5. edit Faculty              \n";
-        cout << "6. edit Car Plate Number     \n";
+        cout << "1. Edit Name                 \n";
+        cout << "2. Edit Student ID           \n";
+        cout << "3. Edit IC                   \n";
+        cout << "4. Edit Contact Number       \n";
+        cout << "5. Edit Faculty              \n";
+        cout << "6. Edit Car Plate Number     \n";
         cout << "7. back to user menu         \n";        
         cout << "=============================\n";
 

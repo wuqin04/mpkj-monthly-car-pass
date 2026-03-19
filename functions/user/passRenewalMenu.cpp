@@ -43,19 +43,27 @@ void passRenewalMenu(User &user){
         getPassStatus();
 
 		cout << "===========================================\n";
-		cout << "(1) apply for monthly car pass\n";
-        cout << "(2) application status menu\n";
-		cout << "(3) update information\n";
-        cout << "(4) back to main menu\n";
+		if (passStatus == 1){
+        cout << "(1) Apply for monthly car pass\n";
+        cout << "(2) Application status menu\n";
+		cout << "(3) Update information\n";
+        cout << "(4) Back to main menu\n";
+        }
+        if (passStatus == 2){
+        cout << "(1) Application status menu\n";
+		cout << "(2) Update information\n";
+        cout << "(3) Back to main menu\n";
+        }
         cout << "===========================================\n";
-		cout << "Choose an action (1-4): ";       
+		cout << "Choose an action: ";
+
 		cin >> choice;
 
 		switch(choice){
             case 1:
                 system("cls");
-                passStatus = 2;
-                continue;;
+                passStatus = 2;        
+                continue;
             case 2:
                 system("cls");
                 viewStatusMenu(user);

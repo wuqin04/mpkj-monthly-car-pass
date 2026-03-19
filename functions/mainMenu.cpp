@@ -27,7 +27,9 @@ void mainMenu() {
 	getline(cin, password);
 
 	if (name == adminLogin && password == adminPass) {
+		system("cls");
 		cout << "Welcome Admin!";
+		adminMenu();
 	}
 	else if (name == userLogin && password == userPass) {
 		system("cls");
