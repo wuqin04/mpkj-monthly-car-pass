@@ -60,10 +60,10 @@ void paymentMenu(User &user) {
 			switch(choice){
 				case 1:
 					system("cls");
-					cout << "============================\n";
-					cout << "| Payment successfully made \n";
-					cout << "|   Press ENTER to return   \n";
-					cout << "============================\n";
+					cout << "=============================\n";
+					cout << "| Payment successfully made |\n";
+					cout << "|   Press ENTER to return   |\n";
+					cout << "=============================\n";
 					paymentMade = true;
 					system("pause");
 					system("cls");
