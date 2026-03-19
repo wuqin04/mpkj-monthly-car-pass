@@ -26,6 +26,7 @@ void User::userInfo(){
 
         if(!infoComplete){
             cout << "WARNING: PLease update your information!\n";
+            cout << "===========================================\n";
         }
 
         cout << "|(1) edit information                     |\n";
