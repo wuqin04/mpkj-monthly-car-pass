@@ -19,12 +19,12 @@ void mainMenu() {
 		string password = "";
 		char ch;
 
-		cout << "===========================================\n";
-		cout << "                MAIN MENU                  \n";
-		cout << "===========================================\n";
-		cout << "Welcome to MPKJ Monthly Car Pass System.   \n";
-		cout << "Input 'new' to create new user or 'q' to exit program.\n";
-		cout << "===========================================\n";
+		cout << "=======================================================\n";
+		cout << "|                     MAIN MENU                       |\n";
+		cout << "=======================================================\n";
+		cout << "|      Welcome to MPKJ Monthly Car Pass System        |\n";
+		cout << "|Input 'new' to create new user or 'q' to exit program|\n";
+		cout << "=======================================================\n";
 
 		cout << "Username: ";
 		getline(cin, username);
@@ -76,11 +76,11 @@ void mainMenu() {
 
 void createNewUser() {
 	system("cls");
-	cout << "===========================================\n";
-	cout << "             CREATE NEW USER               \n";
-	cout << "===========================================\n";
-	cout << "Enter your personal details to create ur acc.\n";
-	cout << "===========================================\n";
+	cout << "=====================================================\n";
+	cout << "|                 CREATE NEW USER                   |\n";
+	cout << "=====================================================\n";
+	cout << "|Enter your personal details to create your account |\n";
+	cout << "=====================================================\n";
 	cout << "New Username: ";
 	cin >> userLogin;
 	cout << "New password: ";

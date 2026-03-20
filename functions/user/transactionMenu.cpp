@@ -9,16 +9,19 @@ void transactionMenu() {
 	while (true) {
 		int choice = 0;
 		cout << "===========================================\n";
-        cout << "           TRANSACTION HISTORY             \n";
+        cout << "|          TRANSACTION HISTORY            |\n";
         cout << "===========================================\n";
+
+		cout << "Transaction history: \n";
+
 		cout << "===========================================\n";
-		cout << "|(1) return to main menu            |\n";
+		cout << "|(1) return to main menu                  |\n";
 		cout << "===========================================\n";
-		cout << "Choose an action (1): ";
+		cout << "Choose an action: ";
 				
         if (!(cin >> choice)) {
             system("cls");
-            cout << "invalid input, try again.\n";
+            cout << "invalid input, please try again.\n";
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             continue;
