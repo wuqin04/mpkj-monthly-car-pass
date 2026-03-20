@@ -8,6 +8,7 @@
 #include "user/userInfoMenu.h"
 using namespace std;
 
+
 const string adminLogin = "admin";
 const string adminPass = "admin";
 string userLogin = "user";
