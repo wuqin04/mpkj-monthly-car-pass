@@ -5,7 +5,7 @@
 #include "admin/paymentHistory.h"
 using namespace std;
 
-void userMenu() {
+void adminMenu() {
     while (true) {
         cout << "===========================================\n";
         cout << "                ADMIN MENU                 \n";
@@ -38,11 +38,10 @@ void userMenu() {
             case 3:
                 cout << "Bye!";
                 break;
-            default
+            default:
                 cout << "Invalid input, try again.\n";
                 continue;
         }
-
         break;
     }
 }

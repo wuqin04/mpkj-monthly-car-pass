@@ -7,6 +7,7 @@
 #include "user/userMenu.h"
 #include "admin/adminMenu.h"
 #include "user/userInfoMenu.h"
+#include "admin/adminMenu.h"
 using namespace std;
 
 const string adminLogin = "admin";
