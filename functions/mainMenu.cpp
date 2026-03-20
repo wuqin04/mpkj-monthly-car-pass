@@ -5,6 +5,7 @@
 #include <limits>
 #include "mainMenu.h"
 #include "user/userMenu.h"
+#include "admin/adminMenu.h"
 #include "user/userInfoMenu.h"
 using namespace std;
 
@@ -44,7 +45,8 @@ void mainMenu() {
 		getline(cin, password);
 
 		if (username == adminLogin && password == adminPass) {
-			cout << "Welcome Admin!";
+			system("cls");
+			adminMenu();
 		}
 		else if (username == userLogin && password == userPass) {
 			system("cls");
