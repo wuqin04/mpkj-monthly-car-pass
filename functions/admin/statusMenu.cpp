@@ -34,11 +34,10 @@ void statusMenu() {
 
         for (int i = 0; i < n; i++) {
             cout << "| " << setw(2) << i+1 
-                 << " | " << setw(8) << ps[i].studentId 
-                 << " | " << setw(2) << setfill('0') << ps[i].hour << ":" 
-                 << setw(2) << ps[i].minute << setfill(' ')
-                 << " | " << setw(2) << ps[i].day << "/" << setw(2) << ps[i].month << "/" << ps[i].year
-                 << " | " << setw(18) << ps[i].status << " |\n";
+                 << "| " << setw(8) << ps[i].studentId 
+                 << "| " << setw(2) << setfill('0') << ps[i].hour << ":" << setw(2) << ps[i].minute << setfill(' ')
+                 << "| " << setw(2) << ps[i].day << "/" << setw(2) << ps[i].month << "/" << ps[i].year
+                 << "| " << setw(18) << ps[i].status << " |\n";
         }
 
         cout << "================================================================\n";
