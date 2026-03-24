@@ -5,6 +5,7 @@
 #include <limits>
 #include "mainMenu.h"
 #include "user/userMenu.h"
+#include "admin/adminMenu.h"
 #include "user/userInfoMenu.h"
 #include "admin/adminMenu.h"
 using namespace std;

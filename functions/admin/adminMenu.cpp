@@ -12,12 +12,12 @@ void adminMenu() {
         cout << "===========================================\n";
 
         cout << "===========================================\n";
-        cout << "|(1) View user payment history             |\n";
-        cout << "|(2) View user monthly pass status         |\n";
+        cout << "|(1) view user payment history             |\n";
+        cout << "|(2) view user monthly pass status         |\n";
         cout << "|(3) exit program                          |\n";
         cout << "===========================================\n";
 
-        cout << "Choose an action (1-3): ";
+        cout << "Choose an action: ";
         int choice = 0;
         if (!(cin >> choice)) {
             system("cls");
@@ -30,7 +30,7 @@ void adminMenu() {
         system("cls");
         switch (choice) {
             case 1:
-                paymentHistoryMenu();
+                paymentHistory();
                 break;
             case 2:
                 statusMenu();
