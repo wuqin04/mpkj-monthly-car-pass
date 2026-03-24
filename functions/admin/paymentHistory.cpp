@@ -11,6 +11,7 @@ struct Payment {
     string studentId;
     double amount;
     string date;
+    string faculty;
 };
 void paymentHistoryMenu() {
     Payment p[100];
@@ -48,6 +49,7 @@ void paymentHistoryMenu() {
                 cout << "| User ID : " << p[0].studentId << endl;
                 cout << "| Amount  : RM " << fixed << setprecision(4) << p[0].amount << endl;
                 cout << "| Date    : " << p[0].date << endl;
+                cout << "| Faculty : " << p[0].faculty << endl;
                 cout << "=================================================\n";
 
                 break;
