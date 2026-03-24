@@ -97,7 +97,7 @@ void statusMenu() {
         cout<<"|Time    : " <<setw(2)<<setfill('0')<<ps[userNo-1].hour<<":"<<setw(2)<<ps[userNo-1].minute<<setfill(' ');
         cout<<"|Date    : " <<setw(2)<<ps[userNo-1].day<<"/"<<setw(2)<<ps[userNo-1].month<<"/"<<ps[userNo-1].year;
         cout<<"|Status  : Rejected\n";
-        //cout<<"|Reason  : " <<ps[userNo-1].reason<<"|\n";
+        cout<<"|Reason  : " <<reason<<"|\n";
         cout<<"===============================================================\n";
                 break;
             case 3:
