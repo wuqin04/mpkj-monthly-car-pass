@@ -4,7 +4,7 @@
 #include "admin/statusMenu.h"
 #include "admin/paymentHistory.h"
 using namespace std;
-
+void paymentHistory();
 void adminMenu() {
     while (true) {
         cout << "===========================================\n";
