@@ -16,7 +16,8 @@ struct Payment {
 void paymentHistoryMenu() {
     Payment p[100];
     while(true) {
-        int n = 1; //
+        int n = 1;
+        string inputId;
         
         cout<<"===================================================\n";
         cout<<"                   PAYMENT HISTORY                 \n";
@@ -44,13 +45,26 @@ void paymentHistoryMenu() {
         switch (choice) {
             case 1: {
                 system("cls");
+                cout << "Enter User ID to view payment history: ";
+                cin >> inputId;
+                bool found = false;
+                for (int i = 0; i < n; i++) {
+                if (p[i].studentId == inputId) {
+                found = true;
+                break;}
+                }
 
+                if (!found) {
+                cout << "User ID not found. Please try again.\n";
+                continue;}
+                
                 cout << "=================================================\n";
                 cout << "| User ID : " << p[0].studentId << endl;
                 cout << "| Amount  : RM " << fixed << setprecision(4) << p[0].amount << endl;
                 cout << "| Date    : " << p[0].date << endl;
                 cout << "| Faculty : " << p[0].faculty << endl;
                 cout << "=================================================\n";
+                continue;
 
                 break;
             }    
@@ -61,8 +75,8 @@ void paymentHistoryMenu() {
                 return;
             default:
                 cout << "Invalid input, try again.\n";
-                system("pause");
-                break;
+                continue;
+                
+        }break;
         }
-    }
-}
+        }
