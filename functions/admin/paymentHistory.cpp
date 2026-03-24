@@ -9,24 +9,32 @@
 #include "admin/statusMenu.h"
 using namespace std;
 
+struct Payment {
+    string studentId;
+    double amount;
+    string date;
+    string faculty;
+};
 void paymentHistoryMenu() {
+    Payment p[100];
     while(true) {
         int n = 1; //
-        string name = "user";   //later will be replaced by actual user name from transaction history data
-        double transaction_amount = 100.00; //later will be replaced by actual transaction amount from transaction history data
-        string date = "2023-10-01";     //later will be replaced by actual transaction date from transaction history data
-        cout<<"=================================================\n";
-        cout<<"                 PAYMENT HISTORY                 \n";
-        cout<<"=================================================\n";
-        cout<<"=================================================\n";
-        cout<<"|  No. | User ID | Amount Paid    |    Date     |\n";
+        
+        cout<<"===================================================\n";
+        cout<<"                   PAYMENT HISTORY                 \n";
+        cout<<"===================================================\n";
+        cout<<"===================================================\n";
+        cout<<"|  No.  | User ID  | Amount Paid    |    Date     |\n";
         for(int i=0; i<n; i++){
-        cout<<"| "<<setw(2)<<i+1<<"   | "<<fixed<<left<<setw(8)<<setprecision(2)<<name<<"| RM "<<fixed<<left<<setw(7)<<transaction_amount<<"     | "<<date<<"  |\n";
-        }
-        cout<<"=================================================\n";
-        cout<<"| (1) View payment                              |\n";
-        cout<<"| (2) Back to admin menu                        |\n";
-        cout<<"=================================================\n";
+            cout<<"|  "<<fixed<<right<<setw(2)<<i+1
+                <<"   |"<<setw(10)<<p[i].studentId
+                <<"| RM "<<setw(8)<<fixed<<setprecision(2)<<p[i].amount
+                <<"    | "<<setw(12)<<p[i].date<<"|\n"; }
+
+        cout<<"===================================================\n";
+        cout<<"| (1) View payment                                |\n";
+        cout<<"| (2) Back to admin menu                          |\n";
+        cout<<"===================================================\n";
         int choice;
         cout << "Choose an option: ";
         if (!(cin >> choice)) {
@@ -36,10 +44,18 @@ void paymentHistoryMenu() {
         }
 
         switch (choice) {
-            case 1:
+            case 1: {
                 system("cls");
-                cout << "Payment view not implemented yet.\n";
-                break;      
+
+                cout << "=================================================\n";
+                cout << "| User ID : " << p[0].studentId << endl;
+                cout << "| Amount  : RM " << fixed << setprecision(4) << p[0].amount << endl;
+                cout << "| Date    : " << p[0].date << endl;
+                cout << "| Faculty : " << p[0].faculty << endl;
+                cout << "=================================================\n";
+
+                break;
+            }    
             case 2:
                 system("cls");
                 adminMenu();
