@@ -15,7 +15,7 @@ struct Payment {
     string date;
     string faculty;
 };
-void paymentHistoryMenu() {
+void paymentHistory() {
     Payment p[100];
     while(true) {
         int n = 1;
