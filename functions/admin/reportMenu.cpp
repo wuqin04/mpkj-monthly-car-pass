@@ -1,9 +1,7 @@
 #include <iostream>
 #include <iomanip>
-#include <string>
-#include <limits>
 #include "admin/adminMenu.h"
-#include "user/userMenu.h"
+#include "user/userInfoMenu.h"
 #include "admin/paymentHistory.h"
 #include "admin/adminMenu.h"
 #include "admin/statusMenu.h"
@@ -20,6 +18,21 @@ void reportMenu() {
     cout << "Faculty: " << "Engineering" << endl;
     cout << "Monthly Pass Status: " << "Approved" << endl;
     cout << "Payment History: " << endl;
-    cout << "Date: " << "01/01/2024" << " | Amount Paid: RM 31,80" << endl;
+    cout << "Date: " << "01/01/2024" << " | Amount Paid: RM 31.80" << endl;
     cout << "===================================================\n";
+    cout << "| (1) Back to admin menu                          |\n";
+    cout << "===================================================\n";
+    int choice = 0;
+    cout << "Choose an option: ";
+    cin >> choice; 
+    switch (choice) {
+        case 1:
+            system("cls");
+            adminMenu();
+            break;
+        default:
+            cout << "Invalid input, try again.\n";
+            reportMenu();
+            break;
+    }
 }
