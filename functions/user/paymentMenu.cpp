@@ -4,13 +4,18 @@
 #include "mainMenu.h"
 #include "user/userMenu.h"
 #include "user/userInfoMenu.h"
+#include "user/passRenewalMenu.h"
 
 using namespace std;
 
-	bool paymentMade = false; 
+bool paymentMade; 
 
 void paymentMenu(User &user) {
+
+	Pass pass;
+
 	while(true){
+
 		int choice;
 
 		cout << "====================================================================\n";
@@ -22,8 +27,11 @@ void paymentMenu(User &user) {
 		if (paymentMade == true){
 			cout << "You have settled your payment.\n";
 		}
-		if (paymentMade == false){
-			cout << "Amount due: RM" << endl;
+		if (paymentMade == false && pass.choice == "month"){
+			cout << "Amount due: RM " << pass.monthPrice << endl;
+		}
+		if (paymentMade == false && pass.choice == "sem"){
+			cout << "Amount due: RM " << pass.semPrice << endl;
 		}
 
 		cout << "If there are any problems or if you wish to settle your payment,\n";

@@ -16,5 +16,4 @@ struct User{
     void editInfo();
 };
 
-
 #endif

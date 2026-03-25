@@ -1,29 +1,85 @@
 #include <iostream>
+#include <string>
 #include "user/userMenu.h"
 #include "user/userInfoMenu.h"
 #include "user/viewStatusMenu.h"
+#include "user/passRenewalMenu.h"
 using namespace std;
 
-const int INFO_INCOMPLETE = 0;
-const int INFO_COMPLETED = 1;
-const int APPLIED_PASS = 2;
-int passStatus = 0;
+const string INFO_INCOMPLETE = "0";
+const string INFO_COMPLETED = "1";
+const string APPLIED_PASS = "2";
+
+Pass pass;
 
 void getPassStatus(){
-	if (passStatus == INFO_INCOMPLETE) 
+	if (pass.passStatus == INFO_INCOMPLETE) 
         cout << "WARNING: Your personal information is not complete.\nPlease update your information." << endl;
-    else if (passStatus == INFO_COMPLETED)
+    else if (pass.passStatus == INFO_COMPLETED)
         cout << "You are eligible to apply for a monthly car pass." << endl;
-    else if (passStatus == APPLIED_PASS)
+    else if (pass.passStatus == APPLIED_PASS)
         cout << "Your application is being processed.\nCheck your application in Status Menu." << endl;
 }
 
- void infoComplete(User &user){
-     if (user.name != "" && user.studentId != "" && user.ic != "" && user.contact != "" && user.faculty != "" && user.carPlate != "")
-         passStatus = INFO_COMPLETED;
-     else
-         passStatus = INFO_INCOMPLETE;
- }
+void infoComplete(User &user){
+    if (user.name != "" && user.studentId != "" && user.ic != "" && user.contact != "" && user.faculty != "" && user.carPlate != "")
+        pass.passStatus = INFO_COMPLETED;
+    else
+        pass.passStatus = INFO_INCOMPLETE;
+}
+
+void passChoice(){
+
+    while(true){
+        int choice;
+        double monthPrice = 31.80, semPrice = (monthPrice * 4) * 95 / 100;
+
+        cout << "===========================================================\n";
+	    cout << "|            MONTHLY PASS APPLICATION CHOICES             |\n";
+	    cout << "===========================================================\n";
+        cout << "|Choice comparison:                                       |\n";
+        cout << "|Monthly                                                  |\n";
+        cout << "|  -RM " << monthPrice << "                                               |\n";
+        cout << "|  -lasts only for one month                              |\n";
+        cout << "|                                                         |\n";
+        cout << "|Per semester                                             |\n";
+        cout << "|  -RM " << semPrice << "                                             |\n";
+        cout << "|  -lasts for 4 months (about a semesters' worth)         |\n";
+        cout << "|  -save up to 5% compared to buying monthly for 4 months |\n";
+        cout << "===========================================================\n";
+	    cout << "|(1) one month                                            |\n";
+        cout << "|(2) one semester                                         |\n";
+        cout << "|(3) cancel                                               |\n";
+        cout << "===========================================================\n";
+        cout << "Choose the type of pass you wish to apply: ";
+        cin >> choice;
+
+        switch(choice){
+            case 1:
+                system("cls");
+                pass.choice = "month";
+                pass.passStatus = APPLIED_PASS; 
+                pass.applyStatus = "3";
+                break;
+            case 2:
+                system("cls");
+                pass.choice = "sem";
+                pass.passStatus = APPLIED_PASS; 
+                pass.applyStatus = "3";
+                break;
+            case 3:
+                system("cls");
+                break;
+            default:
+                system("cls");
+                cin.clear();
+                cin.ignore();
+                cout << "Invalid input, please try again.\n";
+                continue;
+        }
+    break;
+    }
+}
 
 void passRenewalMenu(User &user){
     user.name = "John Doe";
@@ -43,18 +99,20 @@ void passRenewalMenu(User &user){
         getPassStatus();
 
 		cout << "=====================================================\n";
-		cout << "|(1) apply for monthly car pass                     |\n";
-        cout << "|(2) application status menu                        |\n";
-		cout << "|(3) update information                             |\n";
-        cout << "|(4) back to main menu                              |\n";
-        cout << "=====================================================\n";
-		cout << "Choose an action: ";       
-		cin >> choice;
 
-		switch(choice){
+        if (pass.passStatus != "2"){
+		    cout << "|(1) apply for monthly car pass                     |\n";
+            cout << "|(2) application status menu                        |\n";
+		    cout << "|(3) update information                             |\n";
+            cout << "|(4) back to main menu                              |\n";
+            cout << "=====================================================\n";
+		    cout << "Choose an action: ";       
+		    cin >> choice;
+
+		    switch(choice){
             case 1:
                 system("cls");
-                passStatus = 2;        
+                passChoice();      
                 continue;
             case 2:
                 system("cls");
@@ -74,7 +132,38 @@ void passRenewalMenu(User &user){
                 cin.ignore();
                 cout << "Invalid input, please try again.\n";
                 continue;
+            }
         }
-        break;
-    }
+
+        else if(pass.passStatus == "2"){
+            cout << "|(1) application status menu                        |\n";
+		    cout << "|(2) update information                             |\n";
+            cout << "|(3) back to main menu                              |\n";
+            cout << "=====================================================\n";
+		    cout << "Choose an action: ";       
+		    cin >> choice;
+
+		    switch(choice){
+            case 1:
+                system("cls");
+                viewStatusMenu(user);
+                break;
+            case 2:
+                system("cls");
+                user.userInfo();
+                break;
+            case 3:
+                system("cls");
+                userMenu();
+                break;
+            default:
+                system("cls");
+                cin.clear();
+                cin.ignore();
+                cout << "Invalid input, please try again.\n";
+                continue;
+            }
+        }
+    break;
+    }       
 }
