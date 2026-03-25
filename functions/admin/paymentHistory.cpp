@@ -75,8 +75,9 @@ void paymentHistory() {
                 adminMenu();
                 return ;
             default:
-                cout << "Invalid input, try again.\n";
                 system("cls");
+                cout << "Invalid input, try again.\n";
+                
                 continue;
                 
         }break;
