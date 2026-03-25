@@ -43,7 +43,7 @@ void statusMenu() {
         cout << "================================================================\n";
         cout << "|(1) Approve monthly pass                                      |\n" ;
         cout << "|(2) Reject monthly pass                                       |\n";   
-        cout << "|(3) Exit                                                      |\n";
+        cout << "|(3) Back to admin menu                                        |\n";
         cout << "================================================================\n";
         cout << "Enter your choice: ";
 
@@ -53,7 +53,6 @@ void statusMenu() {
 
         switch (choice) {
             case 1:
-                system("cls");
                 cout << "Enter user number to approve: ";
                 cin >> userNo;
                 if (userNo > 0 && userNo <= n) {
@@ -73,7 +72,6 @@ void statusMenu() {
         cout<<"===============================================================\n";
                 break;
             case 2:
-                system("cls");
                 cout << "Enter user number to reject: ";
                 cin >> userNo;
                 if (userNo > 0 && userNo <= n) {
@@ -103,8 +101,7 @@ void statusMenu() {
             case 3:
                 system("cls");
                 adminMenu();
-                system("pause");
-                return;
+                return ;
             default:
                 cout << "Invalid choice. Please try again.\n";
         }

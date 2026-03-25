@@ -46,7 +46,6 @@ void paymentHistory() {
 
         switch (choice) {
             case 1: {
-                system("cls");
                 cout << "Enter User ID to view payment history: ";
                 cin >> inputId;
                 bool found = false;
@@ -73,8 +72,7 @@ void paymentHistory() {
             case 2:
                 system("cls");
                 adminMenu();
-                system("pause"); 
-                return;
+                return ;
             default:
                 cout << "Invalid input, try again.\n";
                 continue;

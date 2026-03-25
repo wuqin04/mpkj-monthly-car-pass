@@ -37,7 +37,7 @@ void adminMenu() {
                 break;
             case 3:
                 cout << "Bye!";
-                break;
+                return;
             default:
                 cout << "Invalid input, try again.\n";
                 continue;
