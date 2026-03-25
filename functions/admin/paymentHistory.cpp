@@ -56,9 +56,10 @@ void paymentHistory() {
                 }
 
                 if (!found) {
+                system("cls");
                 cout << "User ID not found. Please try again.\n";
                 continue;}
-                
+                system("cls");
                 cout << "=================================================\n";
                 cout << "| User ID : " << p[0].studentId << endl;
                 cout << "| Amount  : RM " << fixed << setprecision(4) << p[0].amount << endl;
@@ -70,11 +71,11 @@ void paymentHistory() {
                 break;
             }    
             case 2:
-                system("cls");
                 adminMenu();
                 return ;
             default:
                 cout << "Invalid input, try again.\n";
+                system("cls");
                 continue;
                 
         }break;

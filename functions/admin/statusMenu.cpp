@@ -59,6 +59,7 @@ void statusMenu() {
                     ps[userNo - 1].status = "Approved";
                     cout << "Monthly pass approved for user " << ps[userNo - 1].studentId << ".\n";
                 } else {
+                    system("cls");
                     cout << "Invalid user number.\n";
                     cin.clear();            
                     cin.ignore(10000, '\n');
@@ -84,6 +85,7 @@ void statusMenu() {
                  //   ps[userNo - 1].reason = reason;
 
                 } else {
+                    system("cls");
                     cout << "Invalid user number.\n";
                     cin.clear();            
                     cin.ignore(10000, '\n');
