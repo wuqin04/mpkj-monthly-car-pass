@@ -4,7 +4,7 @@
 #include "admin/statusMenu.h"
 #include "admin/paymentHistory.h"
 using namespace std;
-
+void paymentHistory();
 void adminMenu() {
     while (true) {
         cout << "===========================================\n";
@@ -37,7 +37,7 @@ void adminMenu() {
                 break;
             case 3:
                 cout << "Bye!";
-                break;
+                return;
             default:
                 cout << "Invalid input, try again.\n";
                 continue;
