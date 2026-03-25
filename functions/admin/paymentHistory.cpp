@@ -71,6 +71,7 @@ void paymentHistory() {
                 break;
             }    
             case 2:
+                system("cls");
                 adminMenu();
                 return ;
             default:
