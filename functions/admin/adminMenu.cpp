@@ -30,7 +30,7 @@ void adminMenu() {
         system("cls");
         switch (choice) {
             case 1:
-                paymentHistory();
+                paymentHistoryMenu();
                 break;
             case 2:
                 statusMenu();
