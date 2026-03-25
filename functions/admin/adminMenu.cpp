@@ -3,6 +3,7 @@
 #include "admin/adminMenu.h"
 #include "admin/statusMenu.h"
 #include "admin/paymentHistory.h"
+#include "admin/reportMenu.h"
 using namespace std;
 void paymentHistory();
 void adminMenu() {
@@ -14,7 +15,8 @@ void adminMenu() {
         cout << "===========================================\n";
         cout << "|(1) view user payment history             |\n";
         cout << "|(2) view user monthly pass status         |\n";
-        cout << "|(3) exit program                          |\n";
+        cout << "|(3) view user report                      |\n";
+        cout << "|(4) exit program                          |\n";
         cout << "===========================================\n";
 
         cout << "Choose an action: ";
@@ -35,7 +37,10 @@ void adminMenu() {
             case 2:
                 statusMenu();
                 break;
-            case 3:
+            case 3:               
+                reportMenu();
+                break;
+            case 4:
                 cout << "Bye!";
                 return;
             default:

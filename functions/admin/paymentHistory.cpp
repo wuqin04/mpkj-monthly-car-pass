@@ -7,6 +7,7 @@
 #include "admin/paymentHistory.h"
 #include "admin/adminMenu.h"
 #include "admin/statusMenu.h"
+#include "admin/reportMenu.h"
 using namespace std;
 
 struct Payment {
