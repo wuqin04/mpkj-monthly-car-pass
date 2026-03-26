@@ -9,9 +9,9 @@
 
 using namespace std;
 
-User user;
-
 void userMenu() {
+    User user;
+
     while (true) {
         cout << "===========================================\n";
         cout << "|               USER MENU                 |\n";
