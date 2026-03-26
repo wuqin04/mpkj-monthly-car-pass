@@ -16,7 +16,7 @@ struct Payment {
     string date;
     string faculty;
 };
-void paymentHistory() {
+void paymentHistoryMenu() {
     Payment p[100];
     while(true) {
         int n = 1;
@@ -27,11 +27,12 @@ void paymentHistory() {
         cout<<"===================================================\n";
         cout<<"===================================================\n";
         cout<<"|  No.  | User ID  | Amount Paid    |    Date     |\n";
-        for(int i=0; i<n; i++){
-            cout<<"|  "<<fixed<<right<<setw(2)<<i+1
-                <<"   |"<<setw(10)<<p[i].studentId
-                <<"| RM "<<setw(8)<<fixed<<setprecision(2)<<p[i].amount
-                <<"    | "<<setw(12)<<p[i].date<<"|\n"; }
+        for(int i = 0; i < n; i++){
+            cout<< "|  " << fixed << right << setw(2) << i+1
+                << "   |" << setw(10) <<p [i].studentId
+                << "| RM " << setw(8) << fixed << setprecision(2) << p[i].amount
+                << "    | " << setw(12) << p[i].date <<"|\n"; 
+        }
 
         cout<<"===================================================\n";
         cout<<"| (1) View payment                                |\n";
@@ -51,9 +52,10 @@ void paymentHistory() {
                 cin >> inputId;
                 bool found = false;
                 for (int i = 0; i < n; i++) {
-                if (p[i].studentId == inputId) {
-                found = true;
-                break;}
+                    if (p[i].studentId == inputId) {
+                        found = true;
+                        break;
+                    }
                 }
 
                 if (!found) {
@@ -81,6 +83,7 @@ void paymentHistory() {
                 
                 continue;
                 
-        }break;
         }
-        }
+        break;
+    }
+}

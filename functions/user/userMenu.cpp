@@ -9,9 +9,9 @@
 
 using namespace std;
 
-User user;
-
 void userMenu() {
+    User user;
+
     while (true) {
         cout << "===========================================\n";
         cout << "|               USER MENU                 |\n";
@@ -38,18 +38,23 @@ void userMenu() {
         system("cls");
         switch (choice) {
             case 1:
+                system("cls");
                 user.userInfo();
                 break;
             case 2:
+                system("cls");
                 passRenewalMenu(user);
                 break;
             case 3:
+                system("cls");
                 viewStatusMenu(user);
                 break;
             case 4:
+                system("cls");
                 transactionMenu();
                 break;
             case 5:
+                system("cls");
                 cout << "Bye!";
                 break;
             default:
