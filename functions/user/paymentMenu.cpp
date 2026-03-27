@@ -54,7 +54,7 @@ void paymentMenu(User &user) {
 			switch (choice){
 				case 1:
 					system("cls");
-					userMenu();
+					userMenu(user);
 					break;
 				default:
 					system("cls");
@@ -78,7 +78,7 @@ void paymentMenu(User &user) {
 					continue;
 				case 2:
 					system("cls");
-					userMenu();
+					userMenu(user);
 					break;
 				default:
 					system("cls");

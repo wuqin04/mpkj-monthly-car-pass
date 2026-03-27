@@ -3,6 +3,6 @@
 
 #include "user/userInfoMenu.h"
 
-void userMenu();
+void userMenu(User &user);
 
 #endif

@@ -5,7 +5,7 @@
 
 using namespace std;
 
-void transactionMenu() {
+void transactionMenu(User &user) {
 	while (true) {
 		int choice = 0;
 		cout << "===========================================\n";
@@ -30,7 +30,7 @@ void transactionMenu() {
 		system("cls");
 		switch (choice) {
 			case 1:
-				userMenu();
+				userMenu(user);
 				break;
 			default:
 				cout << "Invalid input, try again.\n";
