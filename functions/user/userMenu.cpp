@@ -9,9 +9,7 @@
 
 using namespace std;
 
-void userMenu() {
-    User user;
-
+void userMenu(User &user) {
     while (true) {
         cout << "===========================================\n";
         cout << "|               USER MENU                 |\n";
@@ -51,7 +49,7 @@ void userMenu() {
                 break;
             case 4:
                 system("cls");
-                transactionMenu();
+                transactionMenu(user);
                 break;
             case 5:
                 system("cls");
@@ -62,7 +60,7 @@ void userMenu() {
                 continue;
         }
 
-        break;
+        return;
     }
     
 }

@@ -71,7 +71,7 @@ void viewStatusMenu(User &user) {
 						break;
 					case 2:
 						system("cls");
-						userMenu();
+						userMenu(user);
 						break;
 					default:
 						system("cls");
@@ -99,7 +99,7 @@ void viewStatusMenu(User &user) {
 					break;
 				case 3:
 					system("cls");
-					userMenu();
+					userMenu(user);
 					break;
 				default:
 					system("cls");
@@ -114,7 +114,7 @@ void viewStatusMenu(User &user) {
 			switch (choice){
 				case 1:
 					system("cls");
-					userMenu();
+					userMenu(user);
 					break;
 
 			default:
@@ -135,7 +135,7 @@ void viewStatusMenu(User &user) {
 					break;
 				case 2:
 					system("cls");
-					userMenu();
+					userMenu(user);
 					break;
 				default:
 						system("cls");

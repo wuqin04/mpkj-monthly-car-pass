@@ -7,7 +7,7 @@
 using namespace std;
 
 void User::userInfo(){
-    bool infoComplete = (this->name != "" && this->studentId != "" && this->ic != "" && this->contact != "" && this->faculty != "" && this->carPlate != "");
+    bool infoComplete = (this->name != "" && this->studentId != "" && this->icNo != "" && this->contact != "" && this->faculty != "" && this->carPlate != "");
     
     while(true){
         int choice;
@@ -17,7 +17,7 @@ void User::userInfo(){
             
         cout << "Name: " << this->name << endl;
         cout << "Student ID: " << this->studentId << endl;
-        cout << "IC: " << this->ic << endl;
+        cout << "IC: " << this->icNo << endl;
         cout << "Contact Number: " << this->contact << endl;
         cout << "Faculty: " << this->faculty << endl;
         cout << "Car Plate Number: " << this->carPlate << endl;
@@ -45,7 +45,7 @@ void User::userInfo(){
             break;
         case 2:
             system("cls");
-            userMenu();
+            userMenu(*this);
             break;
         default:
             system("cls");
@@ -68,7 +68,7 @@ void User::editInfo() {
 
         cout << "Name: " << this->name << endl;
         cout << "Student ID: " << this->studentId << endl;
-        cout << "IC: " << this->ic << endl;
+        cout << "IC: " << this->icNo << endl;
         cout << "Contact Number: " << this->contact << endl;
         cout << "Faculty: " << this->faculty << endl;
         cout << "Car Plate Number: " << this->carPlate << endl;
@@ -99,7 +99,7 @@ void User::editInfo() {
                 continue;
             case 3:
                 cout << "Enter IC: ";
-                cin >> this->ic;
+                cin >> this->icNo;
                 system("cls");
                 continue;
             case 4:
@@ -119,7 +119,7 @@ void User::editInfo() {
                 continue;
             case 7:
                 system("cls");
-                userMenu();
+                userMenu(*this);
                 break;
             default:
                 system("cls");

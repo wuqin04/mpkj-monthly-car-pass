@@ -82,12 +82,6 @@ void passChoice(){
 }
 
 void passRenewalMenu(User &user){
-    user.name = "John Doe";
-    user.studentId = "123456789";
-    user.icNo = "900101-01-1234";
-    user.contact = "012-3456789";
-    user.faculty = "Engineering";
-    user.carPlate = "ABC1234";
     infoComplete(user);
 
 	while(true){
@@ -124,7 +118,7 @@ void passRenewalMenu(User &user){
                 break;
             case 4:
                 system("cls");
-                userMenu();
+                userMenu(user);
                 break;
             default:
                 system("cls");
@@ -154,7 +148,7 @@ void passRenewalMenu(User &user){
                 break;
             case 3:
                 system("cls");
-                userMenu();
+                userMenu(user);
                 break;
             default:
                 system("cls");
