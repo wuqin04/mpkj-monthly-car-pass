@@ -22,7 +22,7 @@ void getPassStatus(){
 }
 
 void infoComplete(User &user){
-    if (user.name != "" && user.studentId != "" && user.ic != "" && user.contact != "" && user.faculty != "" && user.carPlate != "")
+    if (user.name != "" && user.studentId != "" && user.icNo != "" && user.contact != "" && user.faculty != "" && user.carPlate != "")
         pass.passStatus = INFO_COMPLETED;
     else
         pass.passStatus = INFO_INCOMPLETE;
@@ -84,7 +84,7 @@ void passChoice(){
 void passRenewalMenu(User &user){
     user.name = "John Doe";
     user.studentId = "123456789";
-    user.ic = "900101-01-1234";
+    user.icNo = "900101-01-1234";
     user.contact = "012-3456789";
     user.faculty = "Engineering";
     user.carPlate = "ABC1234";
