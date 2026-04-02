@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <fstream>
 #include "user/userMenu.h"
 #include "user/userInfoMenu.h"
 #include "user/viewStatusMenu.h"
