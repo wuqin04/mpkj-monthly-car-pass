@@ -10,7 +10,10 @@
 using namespace std;
 
 void userMenu(User &user) {
+<<<<<<< HEAD
 
+=======
+>>>>>>> a8bf76ff73d2699d13814604c2ba2ae7e09753d0
     while (true) {
         cout << "===========================================\n";
         cout << "|               USER MENU                 |\n";
@@ -61,7 +64,7 @@ void userMenu(User &user) {
                 continue;
         }
 
-        break;
+        return;
     }
     
 }
