@@ -95,7 +95,7 @@ void mainMenu() {
 		for (long long unsigned int i = 0; i < users.size(); i++) {
 			if (username == users[i].username && password == users[i].password) {
 				system("cls");
-				userMenu();
+				userMenu(user);
 				break;
 			}
 			else {

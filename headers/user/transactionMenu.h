@@ -1,6 +1,6 @@
 #ifndef TRANSACTION_MENU_H
 #define TRANSACTION_MENU_H
 
-void transactionMenu();
+void transactionMenu(User &user);
 
 #endif
