@@ -3,6 +3,6 @@
 
 #include "user/userInfoMenu.h"
 
-void userMenu(User &user);
+void userMenu(User &user, vector<User> &users);
 
 #endif

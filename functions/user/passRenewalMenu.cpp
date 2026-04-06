@@ -223,21 +223,11 @@ void passChoice(User &user){
 }
 
 void passRenewalMenu(User &user){
-<<<<<<< HEAD
-    user.name = "John Doe";
-    user.studentId = "123456789";
-    user.icNo = "900101-01-1234";
-    user.contact = "012-3456789";
-    user.faculty = "Engineering";
-
-    user.carPlate = "ABC1234";
-=======
 
     //read user data from data.txt
     ifstream file("data.txt");
     string line, temp;
 
->>>>>>> a8bf76ff73d2699d13814604c2ba2ae7e09753d0
     infoComplete(user);
 	while(true){
 		int choice;
@@ -270,16 +260,7 @@ void passRenewalMenu(User &user){
                 break;
             case 3:
                 system("cls");
-<<<<<<< HEAD
                 return;
-=======
-                user.userInfo();
-                break;
-            case 4:
-                system("cls");
-                userMenu(user);
-                break;
->>>>>>> parent of 42a0cc8 (Modify alot of files, fixes: mainMenu, userinfo, creates: globals.h)
             default:
                 system("cls");
                 cin.clear();
@@ -308,9 +289,7 @@ void passRenewalMenu(User &user){
                 break;
             case 3:
                 system("cls");
-                userMenu(user);
-                break;
-            default:
+                return;
                 system("cls");
                 cin.clear();
                 cin.ignore();

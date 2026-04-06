@@ -83,7 +83,7 @@ void transactionMenu(User &user) {
         system("cls");
 
         if (choice == 1) {
-            userMenu(user);
+            return;
         } else {
             cout << "Invalid input, try again.\n";
             continue;

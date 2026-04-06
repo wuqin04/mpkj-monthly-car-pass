@@ -9,16 +9,8 @@
 
 using namespace std;
 
-<<<<<<< HEAD
 void userMenu(User &user, vector<User> &users) {
     bool infoComplete = (user.name != "-" && user.studentId != "-" && user.icNo != "-" && user.contact != "-" && user.faculty != "-" && user.carPlate != "-");
-=======
-void userMenu(User &user) {
-<<<<<<< HEAD
-
-=======
->>>>>>> a8bf76ff73d2699d13814604c2ba2ae7e09753d0
->>>>>>> parent of 42a0cc8 (Modify alot of files, fixes: mainMenu, userinfo, creates: globals.h)
     while (true) {
         cout << "===========================================\n";
         cout << "|               USER MENU                 |\n";

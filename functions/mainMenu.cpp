@@ -102,37 +102,8 @@ void mainMenu() {
 		for (long long unsigned int i = 0; i < users.size(); i++) {
 			if (username == users[i].username && password == users[i].password) {
 				system("cls");
-<<<<<<< HEAD
 				userMenu(users[i], users);
-=======
-<<<<<<< HEAD
-				userMenu(user);
-				break;
-			}
-			else {
-				cout << "Account not found. Would you like to create one? (y/n): ";
-				cin >> ch;
-				ch = static_cast<char>(tolower(ch));
-
-				if (ch == 'y') {
-					createNewUser();
-				}
-				else if(ch == 'n') {
-					system("cls");
-					clearBuffer();
-					cout << "Terminated account creation.\n";
-					break;
-				}
-				else {
-					system("cls");
-					clearBuffer();
-					cout << "Invalid input, please enter only 'y' or 'n'.\n";
-				}
-=======
-				userMenu(users[i]);
->>>>>>> parent of 42a0cc8 (Modify alot of files, fixes: mainMenu, userinfo, creates: globals.h)
 				return;
->>>>>>> a8bf76ff73d2699d13814604c2ba2ae7e09753d0
 			}
 		}
 		

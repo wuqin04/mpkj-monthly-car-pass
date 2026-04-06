@@ -2,6 +2,7 @@
 #define USER_INFO_H
 
 #include <string>
+#include <vector>
 using namespace std;
 
 struct User{
