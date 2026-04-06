@@ -283,7 +283,7 @@ void saveAllUsers(vector<User> &users) {
                 << users[i].faculty << ","
                 << users[i].carPlate << ","
                 << users[i].submissionStatus << ","
-                << fixed << setprecision(2) << users[i].paymentAmount << ","
+                << users[i].paymentAmount << ","
                 << users[i].paymentStatus << ","
                 << users[i].passStatus << "\n";
     }
