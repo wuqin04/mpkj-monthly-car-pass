@@ -7,6 +7,7 @@
 #include <cctype>
 #include <algorithm>
 #include <limits>
+
 #include "mainMenu.h"
 #include "user/userMenu.h"
 #include "admin/adminMenu.h"
@@ -100,7 +101,7 @@ void mainMenu() {
 		for (long long unsigned int i = 0; i < users.size(); i++) {
 			if (username == users[i].username && password == users[i].password) {
 				system("cls");
-				userMenu(users[i]);
+				userMenu(users[i], users);
 				return;
 			}
 		}
@@ -172,7 +173,7 @@ void createNewUser(vector<User> &users) {
 		cin >> newPassword;
 
 		// check whether the username already exist
-		if (isUserPassExist(newUser, users)) {
+		if (isUserExist(newUser, users)) {
 			cout << "The username is already taken, please try again.\n";
 			cout << "Enter to continue...";
 			clearBuffer();
@@ -222,7 +223,7 @@ void createNewUser(vector<User> &users) {
 }
 
 // check whether the newUser is already exist in our system
-bool isUserPassExist(string newUser, vector<User> users) {
+bool isUserExist(string newUser, vector<User> users) {
 	for (long long unsigned int i = 0; i < users.size(); i++) {
 		if (newUser == users[i].username)
 			return true;
@@ -237,6 +238,5 @@ bool containInvalidChar(string username) {
 			return true;
 		}
 	}
-
 	return false;
 }
