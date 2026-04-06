@@ -2,7 +2,6 @@
 #define USER_INFO_H
 
 #include <string>
-#include <vector>
 using namespace std;
 
 struct User{
@@ -18,9 +17,12 @@ struct User{
     double paymentAmount = 0.0;
     string paymentStatus = "";
     string passStatus = "";
+
+    void userInfo();
+    void editInfo();
 };
 
-void userInfo(User &user, vector<User> &users);
+void userInfo(User &user);
 void createInfo(User &user);
 void editInfo(User &user, vector<User> &users);
 bool validateStudentID(const string &studentId);

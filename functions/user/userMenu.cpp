@@ -9,13 +9,17 @@
 
 using namespace std;
 
+<<<<<<< HEAD
 void userMenu(User &user, vector<User> &users) {
     bool infoComplete = (user.name != "-" && user.studentId != "-" && user.icNo != "-" && user.contact != "-" && user.faculty != "-" && user.carPlate != "-");
-    while (true) {
-        if(!infoComplete){
-            createInfo(user);
-        }
+=======
+void userMenu(User &user) {
+<<<<<<< HEAD
 
+=======
+>>>>>>> a8bf76ff73d2699d13814604c2ba2ae7e09753d0
+>>>>>>> parent of 42a0cc8 (Modify alot of files, fixes: mainMenu, userinfo, creates: globals.h)
+    while (true) {
         cout << "===========================================\n";
         cout << "|               USER MENU                 |\n";
         cout << "===========================================\n";
@@ -42,7 +46,7 @@ void userMenu(User &user, vector<User> &users) {
         switch (choice) {
             case 1:
                 system("cls");
-                userInfo(user, users);
+                userInfo(user);
                 break;
             case 2:
                 system("cls");
@@ -59,10 +63,13 @@ void userMenu(User &user, vector<User> &users) {
             case 5:
                 system("cls");
                 cout << "Bye!";
-                return;
+                break;
             default:
                 cout << "Invalid input, try again.\n";
                 continue;
         }
+
+        return;
     }
+    
 }

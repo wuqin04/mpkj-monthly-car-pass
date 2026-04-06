@@ -7,26 +7,25 @@
 #include <cctype>
 #include <algorithm>
 #include <cstdio>
-#include <regex>
 
 #include "user/userInfoMenu.h"
 #include "user/userMenu.h"
-#include "../globals.h"
 using namespace std;
 
 //function to define a complete user information
 void userInfo(User &user, vector<User> &users){
     bool infoComplete = (this->name != "" && this->studentId != "" && this->icNo != "" && this->contact != "" && this->faculty != "" && this->carPlate != "");
     
-    //display the personal detail of the user if information is complete, if not, it will show the warning message to update the information
     while(true){
+        if(!infoComplete){
+            createInfo(user);
+        }
+
         int choice;
 	    cout << "===========================================\n";
         cout << "|             PERSONAL DETAILS            |\n";
         cout << "===========================================\n";
-
-        cout << "Username: " << user.username << endl;
-        cout << "Password: " << user.password << endl;
+        
         cout << "Name: " << user.name << endl;
         cout << "Student ID: " << user.studentId << endl;
         cout << "IC: " << user.icNo << endl;
@@ -35,20 +34,30 @@ void userInfo(User &user, vector<User> &users){
         cout << "Car Plate Number: " << user.carPlate << endl;
 
         cout << "===========================================\n";
+
+        if(!infoComplete){
+            cout << "WARNING: PLease update your information!\n";
+            cout << "===========================================\n";
+        }
+
         cout << "|(1) edit information                     |\n";
         cout << "|(2) back to main menu                    |\n";
         cout << "===========================================\n";
+
+        
+	    
         cout << "Choose an action: ";
         cin >> choice;
 
         switch(choice){
         case 1:
             system("cls");
-            editInfo(user, users);
+            editInfo(user);
             break;
         case 2:
             system("cls");
-            return;
+            userMenu(user);
+            break;
         default:
             system("cls");
             cin.clear();
@@ -60,8 +69,83 @@ void userInfo(User &user, vector<User> &users){
     }
 }
 
-//function to edit the user information
-void editInfo() {
+/* the technique we use here is temp file swap.
+basically we open original file to read, create new temp file, if any updates we just copy and update
+into temp file and remove original then rename temp file*/
+void createInfo(User &user) {
+    system("cls");
+    cout << "===========================================\n";
+    cout << "|             PERSONAL DETAILS            |\n";
+    cout << "===========================================\n";
+    cout << "Your account is newly created, please fill \nin your details\n\n";
+
+    clearBuffer();
+
+    cout << "Enter Full Name: ";
+    getline(cin, user.name);
+
+    cout << "Enter Student ID: ";
+    getline(cin, user.studentId);
+
+    cout << "Enter IC: ";
+    getline(cin, user.icNo);
+
+    cout << "Enter Contact Number: ";
+    getline(cin, user.contact);
+
+    cout << "Enter Faculty: ";
+    getline(cin, user.faculty);
+
+    cout << "Enter Car Plate Number: ";
+    getline(cin, user.carPlate);
+
+    ifstream inFile(Settings::filePath);
+    ofstream tempFile("temp.txt");
+
+    if (!inFile.is_open() || !tempFile.is_open()) {
+        cerr << "ERROR: Cannot open file,\n";
+        return;
+    }
+
+    string line;
+    while (getline(inFile, line)) {
+        stringstream ss(line);
+        string fileUsername;
+
+        getline(ss, fileUsername, ',');
+
+        if (fileUsername == user.username) {
+            tempFile << user.username << "," 
+                    << user.password << "," 
+                    << user.name << "," 
+                    << user.studentId << "," 
+                    << user.icNo << "," 
+                    << user.contact << "," 
+                    << user.faculty << "," 
+                    << user.carPlate << "," 
+                    << user.submissionStatus << "," 
+                    << "0.00" << ","
+                    << user.paymentStatus << "," 
+                    << user.passStatus << "\n";
+        }
+        else {
+            tempFile << line << '\n';
+        }
+    }
+
+    inFile.close();
+    tempFile.close();
+
+    remove(Settings::filePath.c_str());
+    rename("temp.txt", Settings::filePath.c_str());
+
+    cout << "\n===========================================\n";
+    cout << "Information successfully saved!\n";
+    cout << "Press Enter to continue...";
+    cin.get();
+}
+
+void editInfo(User &user) {
     while (true){
         int choice;
 
@@ -69,8 +153,6 @@ void editInfo() {
         cout << "|           INFORMATION EDITING           |\n";
         cout << "===========================================\n";
 
-        cout << "Username: " << user.username << endl;
-        cout << "Password: " << user.password << endl;
         cout << "Name: " << user.name << endl;
         cout << "Student ID: " << user.studentId << endl;
         cout << "IC: " << user.icNo << endl;
@@ -79,77 +161,60 @@ void editInfo() {
         cout << "Car Plate Number: " << user.carPlate << endl;
 
         cout << "=============================\n";
-        cout << "|(1) edit Username          |\n";
-        cout << "|(2) edit Password          |\n";
-        cout << "|(3) edit Contact Number    |\n";
-        cout << "|(4) edit Faculty           |\n";
-        cout << "|(5) edit Car Plate Number  |\n";
-        cout << "|(6) back to user menu      |\n";        
+        cout << "|(1) edit Name              |\n";
+        cout << "|(2) edit Student ID        |\n";
+        cout << "|(3) edit IC                |\n";
+        cout << "|(4) edit Contact Number    |\n";
+        cout << "|(5) edit Faculty           |\n";
+        cout << "|(6) edit Car Plate Number  |\n";
+        cout << "|(7) back to user menu      |\n";        
         cout << "=============================\n";
+
 
         cout << "Choose an action: ";
         cin >> choice;
         switch(choice){
             case 1:
-                clearBuffer();
-                while (true) {
-                    string tempUsername;
-                    cout << "Enter New Username: ";
-                    getline(cin, tempUsername);
-                    if (usernameExist(tempUsername, users)) {
-                        cout << "The username already exist, choose a new one. Press enter to continue...";
-                        clearBuffer();
-                        continue;
-                    }
-
-                    user.username = tempUsername;
-                    cout << "Username successfully updated!\n";
-                    break;
-                }   
-                break;
+                cout << "Enter name: ";
+                cin >> user.name;
+                system("cls");
+                continue;;
             case 2:
-                cout << "Enter New Password: ";
-                clearBuffer();
-                getline(cin, user.password);
-                cout << "Your password has changed, press enter to continue.";
-                cin.get();
+                cout << "Enter Student ID: ";
+                cin >> user.studentId;
                 system("cls");
-                break;
+                continue;
             case 3:
-                cout << "Enter New Contact Number: ";
-                getline(cin, user.contact);
-                cout << "Your contact number has changed, press enter to continue.";
-                cin.get();
+                cout << "Enter IC: ";
+                cin >> user.icNo;
                 system("cls");
-                break;
+                continue;
             case 4:
+                cout << "Enter Contact Number: ";
+                cin >> user.contact;
+                system("cls");
+                continue;
+            case 5:
                 cout << "Enter Faculty: ";
-                getline(cin, user.faculty);
-                cout << "Your faculty has changed, press enter to continue.";
-                cin.get();
+                cin >> user.faculty;
                 system("cls");
-                break;
-            case 5 : 
+                continue;
+            case 6 : 
                 cout << "Enter Car Plate Number: ";
-                getline(cin, user.carPlate);
-                cout << "Your car plate has changed, press enter to continue.";
-                cin.get();
+                cin >> user.carPlate;
                 system("cls");
+                continue;
+            case 7:
+                system("cls");
+                userMenu(user);
                 break;
-            case 6:
-                system("cls");
-                return;
             default:
                 system("cls");
                 cin.clear();
                 cin.ignore();
                 cout << "Invalide input, please try again.\n";
-                continue;
+            continue;
         }
-
-        saveAllUsers(users);
-        
-        system("cls");
         break;
     }
 }
