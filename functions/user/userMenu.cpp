@@ -12,6 +12,10 @@ using namespace std;
 void userMenu(User &user, vector<User> &users) {
     bool infoComplete = (user.name != "-" && user.studentId != "-" && user.icNo != "-" && user.contact != "-" && user.faculty != "-" && user.carPlate != "-");
     while (true) {
+        if(!infoComplete){
+            createInfo(user);
+        }
+
         cout << "===========================================\n";
         cout << "|               USER MENU                 |\n";
         cout << "===========================================\n";
@@ -38,7 +42,7 @@ void userMenu(User &user, vector<User> &users) {
         switch (choice) {
             case 1:
                 system("cls");
-                userInfo(user);
+                userInfo(user, users);
                 break;
             case 2:
                 system("cls");
@@ -55,13 +59,10 @@ void userMenu(User &user, vector<User> &users) {
             case 5:
                 system("cls");
                 cout << "Bye!";
-                break;
+                return;
             default:
                 cout << "Invalid input, try again.\n";
                 continue;
         }
-
-        return;
     }
-    
 }

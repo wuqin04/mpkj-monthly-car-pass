@@ -203,11 +203,6 @@ void createNewUser(vector<User> users) {
 	}
 }
 
-void clearBuffer() {
-	cin.clear();
-	cin.ignore(numeric_limits<streamsize>::max(), '\n');
-}
-
 // check whether the newUser is already exist in our system
 bool isUserPassExist(string newUser, vector<User> users) {
 	for (long long unsigned int i = 0; i < users.size(); i++) {

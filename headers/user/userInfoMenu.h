@@ -23,7 +23,7 @@ struct User{
     void editInfo();
 };
 
-void userInfo(User &user);
+void userInfo(User &user, vector<User> &users);
 void createInfo(User &user);
 void editInfo(User &user, vector<User> &users);
 bool validateStudentID(const string &studentId);

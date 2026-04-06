@@ -47,25 +47,22 @@ void loadPassStatus(Pass &pass, string userId) {
         getline(ss, paymentStatus, ',');
         getline(ss, passStatus, ',');
 
-username.erase(0, username.find_first_not_of(" \t\r\n"));
-username.erase(username.find_last_not_of(" \t\r\n") + 1);
+		username.erase(0, username.find_first_not_of(" \t\r\n"));
+		username.erase(username.find_last_not_of(" \t\r\n") + 1);
 
-userId.erase(0, userId.find_first_not_of(" \t\r\n"));
-userId.erase(userId.find_last_not_of(" \t\r\n") + 1);
+		userId.erase(0, userId.find_first_not_of(" \t\r\n"));
+		userId.erase(userId.find_last_not_of(" \t\r\n") + 1);
 
- if (username == userId) {
-    submissionStatus.erase(0, submissionStatus.find_first_not_of(" \t\r\n"));
-    submissionStatus.erase(submissionStatus.find_last_not_of(" \t\r\n") + 1);
+		if (username == userId) {
+			submissionStatus.erase(0, submissionStatus.find_first_not_of(" \t\r\n"));
+			submissionStatus.erase(submissionStatus.find_last_not_of(" \t\r\n") + 1);
 
-    pass.applyStatus = submissionStatus;
-    break;
-}
-	
-        }fin.close();}
-		
-
-
-
+			pass.applyStatus = submissionStatus;
+			break;
+		}
+	}
+	fin.close();
+}		
 
 void viewStatusMenu(User &user) {
 	
@@ -121,7 +118,6 @@ else
     cout << "|(1) return to main menu                				   |\n";
 	}
 	else {
-    cout << "|(1) apply for car pass                   |\n";
     cout << "|(2) return to main menu                  |\n";
 	}
 		
@@ -137,8 +133,7 @@ else
 						break;
 					case 2:
 						system("cls");
-						userMenu(user);
-						break;
+						return;
 					default:
 						system("cls");
 						cin.clear();
@@ -168,8 +163,7 @@ else
 					break;
 				case 3:
 					system("cls");
-					userMenu(user);
-					break;
+					return;
 				default:
 					system("cls");
 					cin.clear();
@@ -183,10 +177,8 @@ else
 			switch (choice){
 				case 1:
 					system("cls");
-					userMenu(user);
-					break;
-
-			default:
+					return;
+				default:
 					system("cls");
 					cin.clear();
 					cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -204,8 +196,7 @@ else
 					break;
 				case 2:
 					system("cls");
-					userMenu(user);
-					break;
+					return;
 				default:
 						system("cls");
 						cin.clear();
