@@ -2,6 +2,9 @@
 #include <iomanip>
 #include <limits>
 #include <string>
+#include <vector>
+#include <cstdlib>
+#include <ctime>
 #include "user/userMenu.h"
 #include "user/userInfoMenu.h"
 #include "user/paymentMenu.h"
@@ -62,6 +65,7 @@ void loadPassStatus(Pass &pass, string userId) {
 }		
 
 void viewStatusMenu(User &user) {
+	
 	Pass pass;
 	loadPassStatus(pass, user.username);
 
@@ -78,9 +82,9 @@ else
 
 		int choice;
 		
-		cout << "===========================================\n";
-		cout << "|           APPLICATION STATUS            |\n";
-		cout << "===========================================\n";	
+		cout << "============================================================================\n";
+		cout << "|        		     APPLICATION STATUS               	    	   |\n";
+		cout << "============================================================================\n";	
 		
 		
 	if (pass.applyStatus.find("Approved") != string::npos) {
@@ -88,7 +92,7 @@ else
     cout << "Submission time: " << pass.applyStatus.substr(pass.applyStatus.find('_') + 1) << endl << endl;
 	} 
 	else if (pass.applyStatus.find("Rejected") != string::npos) {
-    cout << "\nYour application is rejected\n";
+    cout << "\nyour submission is rejected, pls contact XXX-XXXXXX to know more details.\n";
     cout << "Submission time: " << pass.applyStatus.substr(pass.applyStatus.find('_') + 1) << endl << endl;
 	}
 	else if (pass.applyStatus.find("Pending") != string::npos || pass.applyStatus.find("Submitted") != string::npos) {
@@ -98,26 +102,26 @@ else
     cout << "You have yet to apply for a car pass\n";
 	}
 
-		cout << "===========================================\n";
+		cout << "============================================================================\n";
 		
 		
 	if (statusOnly == "Approved") {
-    cout << "|(1) show due payment amount              |\n";
-    cout << "|(2) return to main menu                  |\n";
+    cout << "|(1) show due payment amount                              |\n";
+    cout << "|(2) return to main menu                                  |\n";
 	}
 	else if (statusOnly == "Rejected") {
-    cout << "|(1) show reason for rejection            |\n";
-    cout << "|(2) reapply for car pass                 |\n";
-    cout << "|(3) return to main menu                  |\n";
+    cout << "|(1) show reason for rejection          				   |\n";
+    cout << "|(2) reapply for car pass               				   |\n";
+    cout << "|(3) return to main menu                 				   |\n";
 	}
 	else if (statusOnly == "Pending") {
-    cout << "|(1) return to main menu                  |\n";
+    cout << "|(1) return to main menu                				   |\n";
 	}
 	else {
     cout << "|(2) return to main menu                  |\n";
 	}
 		
-		cout << "===========================================\n";
+		cout << "============================================================================\n";
 		cout << "Choose an action: ";
 		cin >> choice;
 
@@ -141,15 +145,18 @@ else
 		
 		else if (statusOnly == "Rejected"){
 			switch (choice){
-				case 1:
-					system("cls");
-					cout << "===========================\n";
-					cout << "|  Reason for rejection:  |\n";
-					cout << "|  Press ENTER to return  |\n";
-					cout << "===========================\n";
-					system("pause");
-					system("cls");
-					continue;
+				case 1: {
+			system("cls");
+    		
+    	cout << "=========================================\n";
+    	cout << "|  Reason for rejection:                |\n";
+    	cout << "|   ---								 |" "\n";
+    	cout << "=========================================\n";
+
+    	system("pause");
+    	system("cls");
+    	continue;
+		}
 				case 2:
 					system("cls");
 					passRenewalMenu(user);
