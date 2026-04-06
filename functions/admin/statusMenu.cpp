@@ -17,7 +17,7 @@ struct PassStatus {
 };
 
 void statusMenu() {
-    string reason;
+    /*string reason;
     PassStatus ps[100]; 
     int n = 0;
 
@@ -26,13 +26,70 @@ void statusMenu() {
                >> ps[n].day >> ps[n].month >> ps[n].year >> ps[n].status) {
         n++;
     }
-    fin.close();
-
+    fin.close();*/
+    User user;
     while (true) {
+        ifstream fin("data.txt");
+        ofstream fout("temp.txt");
+
+        if(!fin.is_open() || !fout.is_open()){
+            cerr << "Error opening file.\n";
+            return;
+        }
+
+        string info;
+        vector<string>userInfo;
+
+        getline(fin, info);
+
+        while(getline(fin, info)){
+            stringstream ss(info);
+            string token;
+    
+            getline(ss, user.username, ',');
+            getline(ss, user.password, ',');
+            getline(ss, user.name, ',');
+            getline(ss, user.studentId, ',');
+            getline(ss, user.icNo, ',');
+            getline(ss, user.contact, ',');
+            getline(ss, user.faculty, ',');
+            getline(ss, user.carPlate, ',');
+            getline(ss, user.submissionStatus, ',');
+
+            getline(ss, token, ',');
+            user.paymentAmount = stod(token);
+
+            getline(ss, user.passStatus, ',');
+            getline(ss, user.username, ',');
+
+            userInfo.push_back(info);
+        }
+
+        fin.close();
+        
         cout << "================================================================\n";
         cout << "| No | User ID   |   Time   |    Date    | Monthly Pass Status |\n";
         cout << "================================================================\n";
 
+        bool foundSubmission = false;
+
+    do{
+        foundSubmission = true;
+
+        if(foundSubmission == true){
+            cout << "======================================================";
+            cout << "Name: " << user.name << '\n';
+            cout << "ID: " << user.studentId << '\n';
+            cout << "Car Plate: " << user.carPlate << '\n';
+            cout << "Submission Status: " << user.submissionStatus << '\n';
+            cout << "======================================================";
+        }
+        cin.get();
+    }while(user.submissionStatus.find("Submitted_") != string::npos);
+    break;
+    }
+}
+        /*if()
         for (int i = 0; i < n; i++) {
             cout << "| " << setw(2) << i+1 
                  << "| " << setw(8) << ps[i].studentId 
@@ -113,3 +170,55 @@ void statusMenu() {
        
     }
 }
+
+ifstream fin("data.txt");
+ofstream fout("temp.txt");
+
+if(!fin.is_open() || !fout.is_open()){
+    cerr << "Error opening file.\n";
+    return;
+}
+
+string info;
+vector<User>userInfo;
+
+getline(fin, info);
+
+while(getline(fin, info)){
+    stringstream ss(info);
+    string token;
+    
+    getline(ss, user.username, ',');
+    getline(ss, user.password, ',');
+    getline(ss, user.name, ',');
+    getline(ss, user.studentId, ',');
+    getline(ss, user.icNo, ',');
+    getline(ss, user.contact, ',');
+    getline(ss, user.faculty, ',');
+    getline(ss, user.carPlate, ',');
+    getline(ss, user.submissionStatus, ',');
+
+    getline(ss, token, ',');
+    user.paymentAmount = stod(token);
+
+    getline(ss, user.passStatus, ',');
+    getline(ss, user.username, ',');
+
+    userInfo.push_back(user);
+}
+
+fin.close();
+
+bool foundSubmission;
+
+do{
+    foundSubmission = true;
+
+    cout << "======================================================";
+    cout << "Name: " << user.name '\n';
+    cout << "ID: " << user.studentId << '\n';
+    cout << "Car Plate: " << user.carPlate << '\n';
+    cout << "Submission Status: " << user.submissionStatus << '\n';
+    cout << "======================================================";
+
+}while(userInfo.submissionStatus.find("Submitted_") != string::npos);*/
