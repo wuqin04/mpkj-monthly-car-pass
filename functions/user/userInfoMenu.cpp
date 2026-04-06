@@ -11,7 +11,6 @@
 
 #include "user/userInfoMenu.h"
 #include "user/userMenu.h"
-#include "../globals.h"
 using namespace std;
 
 void userInfo(User &user, vector<User> &users){    
@@ -36,9 +35,18 @@ void User::userInfo(){
         cout << "Car Plate Number: " << user.carPlate << endl;
 
         cout << "===========================================\n";
+
+        if(!infoComplete){
+            cout << "WARNING: PLease update your information!\n";
+            cout << "===========================================\n";
+        }
+
         cout << "|(1) edit information                     |\n";
         cout << "|(2) back to main menu                    |\n";
         cout << "===========================================\n";
+
+        
+	    
         cout << "Choose an action: ";
         cin >> choice;
 
