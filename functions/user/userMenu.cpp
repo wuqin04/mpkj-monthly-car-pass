@@ -20,10 +20,6 @@ void userMenu(User &user) {
 >>>>>>> a8bf76ff73d2699d13814604c2ba2ae7e09753d0
 >>>>>>> parent of 42a0cc8 (Modify alot of files, fixes: mainMenu, userinfo, creates: globals.h)
     while (true) {
-        if(!infoComplete){
-            createInfo(user);
-        }
-
         cout << "===========================================\n";
         cout << "|               USER MENU                 |\n";
         cout << "===========================================\n";
@@ -50,11 +46,7 @@ void userMenu(User &user) {
         switch (choice) {
             case 1:
                 system("cls");
-<<<<<<< HEAD
-                userInfo(user, users);
-=======
-                user.userInfo();
->>>>>>> parent of 42a0cc8 (Modify alot of files, fixes: mainMenu, userinfo, creates: globals.h)
+                userInfo(user);
                 break;
             case 2:
                 system("cls");
@@ -71,10 +63,13 @@ void userMenu(User &user) {
             case 5:
                 system("cls");
                 cout << "Bye!";
-                return;
+                break;
             default:
                 cout << "Invalid input, try again.\n";
                 continue;
         }
+
+        return;
     }
+    
 }
