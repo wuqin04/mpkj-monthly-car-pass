@@ -5,7 +5,10 @@
 #include "admin/paymentHistory.h"
 #include "admin/reportMenu.h"
 using namespace std;
+
 void paymentHistory();
+
+//function to display the admin menu
 void adminMenu() {
     while (true) {
         cout << "===========================================\n";

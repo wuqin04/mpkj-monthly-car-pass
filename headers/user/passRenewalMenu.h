@@ -15,6 +15,6 @@ struct Pass{
 void getPassStatus();
 void infoComplete(User &user);
 void passRenewalMenu(User &user);
-void passChoice(User &user);
+void passChoice();
 
 #endif

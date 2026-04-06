@@ -83,10 +83,11 @@ void statusMenu() {
             cout << "Car Plate: " << user.carPlate << '\n';
             cout << "Submission Status: " << user.submissionStatus << '\n';
             cout << "======================================================";
+
+            
         }
         cin.get();
     }while(user.submissionStatus.find("Submitted_") != string::npos);
-    break;
     }
 }
         /*if()

@@ -11,7 +11,7 @@
 
 #include "user/userInfoMenu.h"
 #include "user/userMenu.h"
-#include "../globals.h"
+#include "globals.h"
 using namespace std;
 
 void userInfo(User &user, vector<User> &users){    

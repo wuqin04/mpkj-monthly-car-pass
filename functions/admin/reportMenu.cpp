@@ -14,6 +14,7 @@
 
 using namespace std;
 
+//extract date from data.txt
 void extractStatusDate(const string& input, string& status, string& date) {
     if (input == "-" || input.empty()) {
         status = "-";
@@ -25,6 +26,7 @@ void extractStatusDate(const string& input, string& status, string& date) {
     getline(ss, date, '_');
 }
 
+//asign month name for number digits
 string getMonthName(int month) {
     const string months[] = {"January", "February", "March", "April", "May", "June",
                              "July", "August", "September", "October", "November", "December"};
@@ -32,12 +34,14 @@ string getMonthName(int month) {
     return months[month - 1];
 }
 
+//getting month from extracted date
 int extractMonth(const string &date) {
     if (date == "-" || date.size() < 7) return -1;
     string mm = date.substr(5, 2);
     return stoi(mm);
 }
 
+//navigation menu before listing monthly report
 void selectMonth() { 
     while (true) { 
         cout << "====================================================\n";
@@ -82,6 +86,7 @@ void selectMonth() {
     }
 }
 
+//function to identify pass statuss
 string getPassKeyword(const string &passStatus) {
     if (passStatus == "-") return "-";
     string keyword = passStatus.substr(0, passStatus.find('_'));
@@ -89,8 +94,10 @@ string getPassKeyword(const string &passStatus) {
     return keyword; 
 }
 
+//monthly report menu
 void reportMenu(int selectedMonth) {
 
+    //if no data.txt, it can,t open the monthly report
     ifstream file("data.txt");
     if (!file.is_open()) {
         cout << "Error: Cannot open data.txt\n";
@@ -98,6 +105,7 @@ void reportMenu(int selectedMonth) {
     }
     string line;
 
+    //change the month name according to the selected month by admin
     string monthName = getMonthName(selectedMonth);
     cout << "=================================================================================================================================================================================================\n";
     cout << "|                                                                                              " << monthName << " REPORT                                                                                     |\n";
@@ -106,20 +114,24 @@ void reportMenu(int selectedMonth) {
     cout << "|--------------|------------------------------|-----------------|---------------|----------------|--------------------|--------------------|------------------|------------|--------------------|\n";    
     getline(file, line);
 
+    //skip the first header from the data.txt
     while (getline(file, line)) {
         if (line.empty()) continue;
         stringstream ss(line);
         string temp;
 
+        //define the strings showing in the report
         string name, studentID, faculty, carPlate;
         string submissionStatus, paymentAmount, paymentStatus, passStatus;
 
+        //skip username and password coloumn
         getline(ss, temp, ',');
         getline(ss, temp, ',');
 
         getline(ss, name, ',');
         getline(ss, studentID, ',');
 
+        //skip IcNo and contact
         getline(ss, temp, ',');
         getline(ss, temp, ',');
 
@@ -133,12 +145,14 @@ void reportMenu(int selectedMonth) {
         string subStatus, dateApplied;
         string payStatus, dateIssued;
 
+        //getting dates from submissionStatus and paymentStatus and print in to the selected coloumn
         extractStatusDate(submissionStatus, subStatus, dateApplied);
         extractStatusDate(paymentStatus, payStatus, dateIssued);
 
         int rowMonth = extractMonth(dateApplied);
         if (rowMonth != selectedMonth) continue;
 
+        //set width for the data to align the table
         cout << "| "
              << setw(12)  << left << studentID << " | "
              << setw(28) << left << name << " | "
@@ -156,6 +170,7 @@ void reportMenu(int selectedMonth) {
 
     file.close();
 
+    //navigation pannel to print data and bact to admin menu
     cout << "=========================================================================================\n";
     cout << "| (1) Print Report                                                                      |\n";
     cout << "| (2) Back to admin menu                                                                |\n";
