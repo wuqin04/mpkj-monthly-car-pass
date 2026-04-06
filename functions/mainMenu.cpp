@@ -12,16 +12,12 @@
 #include "admin/adminMenu.h"
 #include "user/userInfoMenu.h"
 #include "admin/adminMenu.h"
+#include "globals.h"
 
 using namespace std;
 
-// filepath and admin login criteria are always constant 
-const string filePath = "data.txt";
-const string adminLogin = "admin";
-const string adminPass = "admin";
-
 void mainMenu() {
-    ifstream inputFile(filePath);
+    ifstream inputFile(Settings::filePath);
 
     string line = "";
     vector<User> users;
@@ -60,6 +56,8 @@ void mainMenu() {
         users.push_back(user);
     }
 
+	inputFile.close();
+
 	while (true) {
 		string username = "";
 		string password = "";
@@ -92,65 +90,43 @@ void mainMenu() {
 		cout << "Password: ";
 		getline(cin, password);
 
-		if (username == adminLogin && password == adminPass) {
+		if (username == Settings::adminLogin && password == Settings::adminPass) {
 			system("cls");
 			adminMenu();
 			break;
 		}
-
+ 
 		// check if user's login and password are store into our data.txt file
 		for (long long unsigned int i = 0; i < users.size(); i++) {
 			if (username == users[i].username && password == users[i].password) {
 				system("cls");
-<<<<<<< HEAD
-				userMenu(user);
-				break;
-			}
-			else {
-				cout << "Account not found. Would you like to create one? (y/n): ";
-				cin >> ch;
-				ch = static_cast<char>(tolower(ch));
-
-				if (ch == 'y') {
-					createNewUser();
-				}
-				else if(ch == 'n') {
-					system("cls");
-					clearBuffer();
-					cout << "Terminated account creation.\n";
-					break;
-				}
-				else {
-					system("cls");
-					clearBuffer();
-					cout << "Invalid input, please enter only 'y' or 'n'.\n";
-				}
-=======
 				userMenu(users[i]);
 				return;
->>>>>>> a8bf76ff73d2699d13814604c2ba2ae7e09753d0
 			}
 		}
-		
+
 		cout << "Account not found. Would you like to create one? (y/n): ";
 		cin >> ch;
 		ch = static_cast<char>(tolower(ch));
 
 		if (ch == 'y') {
 			createNewUser(users);
+			continue; 
 		}
 		else if(ch == 'n') {
+			system("cls");
+			clearBuffer(); 
 			cout << "Terminated account creation.\n";
 			cout << "Press Enter to return...";
-			clearBuffer();
 			cin.get();
 			system("cls");
 			continue;
 		}
 		else {
+			system("cls");
+			clearBuffer();
 			cout << "Invalid input, please enter only 'y' or 'n'.\n";
 			cout << "Press Enter to continue...";
-			clearBuffer();
 			cin.get();
 			system("cls");
 			continue;
@@ -159,7 +135,7 @@ void mainMenu() {
 	}
 }
 
-void createNewUser(vector<User> users) {
+void createNewUser(vector<User> &users) {
 	while (true) {
 		string newUser;
 		string newPassword;
@@ -205,7 +181,7 @@ void createNewUser(vector<User> users) {
 			continue;
 		}
 		else {
-			ofstream newLogin(filePath, ios::app);
+			ofstream newLogin(Settings::filePath, ios::app);
 
 			if (!newLogin.is_open()){
 				cerr << "ERROR: CANNOT OPEN FILE FOR APPENDING.\n";
@@ -214,6 +190,21 @@ void createNewUser(vector<User> users) {
 
 			newLogin << newUser << "," << newPassword << ",-,-,-,-,-,-,-_-,0.00,-_-,-" << "\n";
 			newLogin.close();
+			User u;
+			u.username = newUser;
+			u.password = newPassword;
+			u.name = "-";
+			u.studentId = "-";
+			u.icNo = "-";
+			u.contact = "-";
+			u.faculty = "-";
+			u.carPlate = "-";
+			u.submissionStatus = "-_-";
+			u.paymentAmount = 0.00;
+			u.paymentStatus = "-_-";
+			u.passStatus = "-";
+			users.push_back(u);
+			cout << u.username << u.password;
 
 			cout << "Your account is already created,\nPlease login now.\n";
 
@@ -223,14 +214,11 @@ void createNewUser(vector<User> users) {
 			cin.get();
 
 			system("cls");
-			return;
-		}		
+			break;
+		}	
+		break;	
 	}
-}
-
-void clearBuffer() {
-	cin.clear();
-	cin.ignore(numeric_limits<streamsize>::max(), '\n');
+	return;
 }
 
 // check whether the newUser is already exist in our system

@@ -4,8 +4,7 @@
 #include "user/userInfoMenu.h"
 
 void mainMenu();
-void createNewUser(vector<User> users);
-void clearBuffer();
+void createNewUser(vector<User> &users);
 bool isUserPassExist(string newUser, vector<User> users);
 bool containInvalidChar(string username);
 

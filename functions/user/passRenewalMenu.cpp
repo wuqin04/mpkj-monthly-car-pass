@@ -209,20 +209,10 @@ void passChoice(User &user){
 }
 
 void passRenewalMenu(User &user){
-<<<<<<< HEAD
-    user.name = "John Doe";
-    user.studentId = "123456789";
-    user.icNo = "900101-01-1234";
-    user.contact = "012-3456789";
-    user.faculty = "Engineering";
-
-    user.carPlate = "ABC1234";
-=======
 
     ifstream file("data.txt");
     string line, temp;
 
->>>>>>> a8bf76ff73d2699d13814604c2ba2ae7e09753d0
     infoComplete(user);
 
 	while(true){
@@ -255,7 +245,7 @@ void passRenewalMenu(User &user){
                 break;
             case 3:
                 system("cls");
-                user.userInfo();
+                userInfo(user);
                 break;
             case 4:
                 system("cls");
@@ -285,7 +275,7 @@ void passRenewalMenu(User &user){
                 break;
             case 2:
                 system("cls");
-                user.userInfo();
+                userInfo(user);
                 break;
             case 3:
                 system("cls");

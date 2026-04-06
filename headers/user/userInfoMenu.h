@@ -17,9 +17,11 @@ struct User{
     double paymentAmount = 0.0;
     string paymentStatus = "";
     string passStatus = "";
-
-    void userInfo();
-    void editInfo();
 };
+
+void userInfo(User &user);
+void createInfo(User &user);
+void editInfo(User &user);
+void clearBuffer();
 
 #endif
