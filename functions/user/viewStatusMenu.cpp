@@ -2,6 +2,9 @@
 #include <iomanip>
 #include <limits>
 #include <string>
+#include <vector>
+#include <cstdlib>
+#include <ctime>
 #include "user/userMenu.h"
 #include "user/userInfoMenu.h"
 #include "user/paymentMenu.h"
@@ -65,6 +68,7 @@ userId.erase(userId.find_last_not_of(" \t\r\n") + 1);
 
 
 void viewStatusMenu(User &user) {
+	
 	Pass pass;
 	loadPassStatus(pass, user.username);
 
@@ -146,15 +150,31 @@ else
 		
 		else if (statusOnly == "Rejected"){
 			switch (choice){
-				case 1:
-					system("cls");
-					cout << "=================================================\n";
-					cout << "|  Reason for rejection:  			|\n";
-					cout << "|  The available monthly car pass are full  	|\n";
-					cout << "=================================================\n";
-					system("pause");
-					system("cls");
-					continue;
+				case 1: {
+			system("cls");
+    		vector<string> reasons = {
+        	"Incomplete documents",
+        	"Invalid student ID",
+        	"Parking quota full",
+        	"Unpaid previous fees",
+        	"Duplicate application"
+    		};
+
+    	unsigned seed = 0;
+	for (char c : user.username) seed += c;
+
+	srand(seed); 
+	int index = rand() % reasons.size();
+
+    	cout << "=========================================\n";
+    	cout << "|  Reason for rejection:                |\n";
+    	cout << "|  " << reasons[index] << "\n";
+    	cout << "=========================================\n";
+
+    	system("pause");
+    	system("cls");
+    	continue;
+		}
 				case 2:
 					system("cls");
 					passRenewalMenu(user);
