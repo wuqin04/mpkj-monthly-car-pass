@@ -51,15 +51,16 @@ userId.erase(0, userId.find_first_not_of(" \t\r\n"));
 userId.erase(userId.find_last_not_of(" \t\r\n") + 1);
 
  if (username == userId) {
-        pass.applyStatus = submissionStatus;
+    submissionStatus.erase(0, submissionStatus.find_first_not_of(" \t\r\n"));
+    submissionStatus.erase(submissionStatus.find_last_not_of(" \t\r\n") + 1);
 
-        
-
-        break;
+    pass.applyStatus = submissionStatus;
+    break;
+}
 	
-        }}
-		fin.close();
-    }
+        }fin.close();}
+		
+
 
 
 
@@ -93,7 +94,7 @@ else
     cout << "\nYour application is rejected\n";
     cout << "Submission time: " << pass.applyStatus.substr(pass.applyStatus.find('_') + 1) << endl << endl;
 	}
-	else if (pass.applyStatus.find("Pending") != string::npos) {
+	else if (pass.applyStatus.find("Pending") != string::npos || pass.applyStatus.find("Submitted") != string::npos) {
     cout << "\nYour application is still pending for review\n\n";
 	}
 	else {
