@@ -1,6 +1,9 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include <fstream>
+#include <vector>
+#include <sstream>
 
 #include "user/userInfoMenu.h"
 #include "user/userMenu.h"
@@ -88,33 +91,33 @@ void User::editInfo() {
         cin >> choice;
         switch(choice){
             case 1:
-                cout << "Enter name: ";
-                cin >> this->name;
+                cout << "Enter Name: ";
+                getline(cin >> ws, this->name);
                 system("cls");
-                continue;;
+                continue;   
             case 2:
                 cout << "Enter Student ID: ";
-                cin >> this->studentId;
+                getline(cin >> ws, this->studentId);
                 system("cls");
                 continue;
             case 3:
                 cout << "Enter IC: ";
-                cin >> this->icNo;
+                getline(cin >> ws, this->icNo);
                 system("cls");
                 continue;
             case 4:
                 cout << "Enter Contact Number: ";
-                cin >> this->contact;
+                getline(cin >> ws, this->contact);
                 system("cls");
                 continue;
             case 5:
                 cout << "Enter Faculty: ";
-                cin >> this->faculty;
+                getline(cin >> ws, this->faculty);
                 system("cls");
                 continue;
             case 6 : 
                 cout << "Enter Car Plate Number: ";
-                cin >> this->carPlate;
+                getline(cin >> ws, this->carPlate);
                 system("cls");
                 continue;
             case 7:
