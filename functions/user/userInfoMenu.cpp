@@ -14,9 +14,8 @@
 #include "../globals.h"
 using namespace std;
 
-void userInfo(User &user, vector<User> &users){    
 //function to define a complete user information
-void User::userInfo(){
+void userInfo(User &user, vector<User> &users){
     bool infoComplete = (this->name != "" && this->studentId != "" && this->icNo != "" && this->contact != "" && this->faculty != "" && this->carPlate != "");
     
     //display the personal detail of the user if information is complete, if not, it will show the warning message to update the information
@@ -62,7 +61,7 @@ void User::userInfo(){
 }
 
 //function to edit the user information
-void User::editInfo() {
+void editInfo() {
     while (true){
         int choice;
 
