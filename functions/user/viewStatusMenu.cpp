@@ -148,10 +148,10 @@ else
 			switch (choice){
 				case 1:
 					system("cls");
-					cout << "===========================\n";
-					cout << "|  Reason for rejection:  |\n";
-					cout << "|  Press ENTER to return  |\n";
-					cout << "===========================\n";
+					cout << "=================================================\n";
+					cout << "|  Reason for rejection:  			|\n";
+					cout << "|  The available monthly car pass are full  	|\n";
+					cout << "=================================================\n";
 					system("pause");
 					system("cls");
 					continue;
