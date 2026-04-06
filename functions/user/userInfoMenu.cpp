@@ -6,9 +6,11 @@
 #include "user/userMenu.h"
 using namespace std;
 
+//function to define a complete user information
 void User::userInfo(){
     bool infoComplete = (this->name != "" && this->studentId != "" && this->icNo != "" && this->contact != "" && this->faculty != "" && this->carPlate != "");
     
+    //display the personal detail of the user if information is complete, if not, it will show the warning message to update the information
     while(true){
         int choice;
 	    cout << "===========================================\n";
@@ -58,6 +60,7 @@ void User::userInfo(){
     }
 }
 
+//function to edit the user information
 void User::editInfo() {
     while (true){
         int choice;
