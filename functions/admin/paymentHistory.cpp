@@ -1,43 +1,96 @@
 #include <iostream>
 #include <iomanip>
-#include <string>
+#include <fstream>
+#include <sstream>
+#include <vector>
 #include <limits>
+#include <string>
 #include "admin/adminMenu.h"
-#include "user/userMenu.h"
-#include "admin/paymentHistory.h"
-#include "admin/adminMenu.h"
-#include "admin/statusMenu.h"
-#include "admin/reportMenu.h"
 using namespace std;
 
 struct Payment {
     string studentId;
     double amount;
-    string date;
+    string date;       
     string faculty;
 };
-void paymentHistoryMenu() {
-    Payment p[100];
-    while(true) {
-        int n = 1;
-        string inputId;
-        
-        cout<<"===================================================\n";
-        cout<<"                   PAYMENT HISTORY                 \n";
-        cout<<"===================================================\n";
-        cout<<"===================================================\n";
-        cout<<"|  No.  | User ID  | Amount Paid    |    Date     |\n";
-        for(int i = 0; i < n; i++){
-            cout<< "|  " << fixed << right << setw(2) << i+1
-                << "   |" << setw(10) <<p [i].studentId
-                << "| RM " << setw(8) << fixed << setprecision(2) << p[i].amount
-                << "    | " << setw(12) << p[i].date <<"|\n"; 
+
+
+vector<Payment> loadPayments() {
+    vector<Payment> payments;
+    ifstream fin("data.txt");
+    if (!fin) {
+        cout << "File not found!\n";
+        return payments;
+    }
+
+    string line;
+    getline(fin, line); 
+
+    while (getline(fin, line)) {
+        stringstream ss(line);
+        string username, password, name, studentID, ICNo, contact, faculty;
+        string carPlate, submissionStatus, paymentAmountStr, paymentStatus, passStatus;
+
+        getline(ss, username, ',');
+        getline(ss, password, ',');
+        getline(ss, name, ',');
+        getline(ss, studentID, ',');
+        getline(ss, ICNo, ',');
+        getline(ss, contact, ',');
+        getline(ss, faculty, ',');
+        getline(ss, carPlate, ',');
+        getline(ss, submissionStatus, ',');
+        getline(ss, paymentAmountStr, ',');
+        getline(ss, paymentStatus, ',');
+        getline(ss, passStatus, ',');
+
+        Payment p;
+        p.studentId = studentID;
+
+        try {
+            p.amount = stod(paymentAmountStr);
+        } catch (...) {
+            p.amount = 0.0;
         }
 
-        cout<<"===================================================\n";
-        cout<<"| (1) View payment                                |\n";
-        cout<<"| (2) Back to admin menu                          |\n";
-        cout<<"===================================================\n";
+        size_t pos = paymentStatus.find('_');
+        if (pos != string::npos && pos + 1 < paymentStatus.size()) {
+            p.date = paymentStatus.substr(pos + 1);
+        } else {
+            p.date = "N/A";
+        }
+
+        p.faculty = faculty;
+
+        payments.push_back(p);
+    }
+
+    fin.close();
+    return payments;
+}
+
+
+void paymentHistoryMenu() {
+    vector<Payment> payments = loadPayments();
+    if (payments.empty()) return;
+
+    while (true) {
+        cout << "===========================================================\n";
+        cout << "                       PAYMENT HISTORY                     \n";
+        cout << "===========================================================\n";
+        cout << "|  No.  | User ID    | Amount Paid | Date                |\n";
+        cout << "===========================================================\n";
+
+        for (size_t i = 0; i < payments.size(); i++) {
+            cout << "| " << setw(3) << i+1<< "   | " << setw(10) << payments[i].studentId<< " | RM " << setw(8) << fixed << setprecision(2) << payments[i].amount<< " | " << setw(19) << payments[i].date << " |\n";
+        }
+
+        cout << "===========================================================\n";
+        cout << "| (1) View payment details                                 |\n";
+        cout << "| (2) Back to admin menu                                   |\n";
+        cout << "===========================================================\n";
+
         int choice;
         cout << "Choose an option: ";
         if (!(cin >> choice)) {
@@ -46,44 +99,53 @@ void paymentHistoryMenu() {
             continue;
         }
 
-        switch (choice) {
-            case 1: {
-                cout << "Enter User ID to view payment history: ";
-                cin >> inputId;
-                bool found = false;
-                for (int i = 0; i < n; i++) {
-                    if (p[i].studentId == inputId) {
-                        found = true;
-                        break;
+        if (choice == 1) {
+            string inputId;
+            cout << "Enter User ID to view payment history: ";
+            cin >> inputId;
+
+            bool found = false;
+            for (auto &p : payments) {
+                if (p.studentId == inputId) {
+                    found = true;
+                    system("cls");
+                    cout << "===========================================================\n";
+                    cout << "| User ID : " << p.studentId << endl;
+                    cout << "| Amount  : RM " << fixed << setprecision(2) << p.amount << endl;
+                    cout << "| Date    : " << p.date << endl;
+                    cout << "| Faculty : " << p.faculty << endl;
+                    cout << "===========================================================\n";
+                    cout << "| (1) Back to payment history menu                      |\n";
+                    cout << "===========================================================\n";
+                    int subChoice;
+                    cout << "Choose an option: ";
+                    while(true){
+                    if (!(cin >> subChoice)) {
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                        continue;
                     }
-                }
+                    if (subChoice == 1) {
+                        system("cls");
+                        break;
+                    } else {
+                        cout << "Invalid input, try again.\n";
+                        cout << "Choose an option: ";
+                    }
+                }}
+            }
 
-                if (!found) {
+            if (!found) {
                 system("cls");
-                cout << "User ID not found. Please try again.\n";
-                continue;}
-                system("cls");
-                cout << "=================================================\n";
-                cout << "| User ID : " << p[0].studentId << endl;
-                cout << "| Amount  : RM " << fixed << setprecision(4) << p[0].amount << endl;
-                cout << "| Date    : " << p[0].date << endl;
-                cout << "| Faculty : " << p[0].faculty << endl;
-                cout << "=================================================\n";
-                continue;
+                cout << "User ID not found.\n";
+            }
 
-                break;
-            }    
-            case 2:
-                system("cls");
-                adminMenu();
-                return ;
-            default:
-                system("cls");
-                cout << "Invalid input, try again.\n";
-                
-                continue;
-                
+        } else if (choice == 2) {
+            system("cls");
+            adminMenu();
+            return;
+        } else {
+            cout << "Invalid input, try again.\n";
         }
-        break;
     }
 }
