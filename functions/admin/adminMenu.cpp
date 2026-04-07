@@ -16,10 +16,10 @@ void adminMenu() {
         cout << "===========================================\n";
 
         cout << "===========================================\n";
-        cout << "|(1) view user payment history             |\n";
-        cout << "|(2) view user monthly pass status         |\n";
-        cout << "|(3) view user report                      |\n";
-        cout << "|(4) exit program                          |\n";
+        cout << "|(1) view user payment history            |\n";
+        cout << "|(2) view user monthly pass status        |\n";
+        cout << "|(3) view user report                     |\n";
+        cout << "|(4) exit program                         |\n";
         cout << "===========================================\n";
 
         cout << "Choose an action: ";
@@ -44,12 +44,13 @@ void adminMenu() {
                 reportMenu();
                 break;
             case 4:
-                cout << "Bye!";
-                return;
+                system("cls");
+                cout << "Bye!\n";
+                break;
             default:
                 cout << "Invalid input, try again.\n";
                 continue;
         }
-        break;
+    break;
     }
 }

@@ -3,8 +3,10 @@
 #include <iomanip>
 #include <cstdlib>
 #include <ctime>
+#include <chrono>
 #include "user/userInfoMenu.h"
 #include "admin/adminMenu.h"
+#include "user/userInfoMenu.h"
 
 #include <fstream>
 
@@ -16,7 +18,163 @@ struct PassStatus {
     string status;
 };
 
+string datetime() {
+    time_t now = time(0);
+    tm *t = localtime(&now);
+    char buf[32];
+    sprintf(buf, "%04d-%02d-%02d_%02d:%02d:%02d",
+        1900 + t->tm_year, 1 + t->tm_mon, t->tm_mday,
+        t->tm_hour, t->tm_min, t->tm_sec);
+    return string(buf);;
+}
+
 void statusMenu() {
+
+    User user;
+
+    ifstream fin("data.txt");
+    ofstream fout("temp.txt");
+
+    if(!fin.is_open() || !fout.is_open()){
+        cerr << "Error opening file.\n";
+        return;
+    }
+    
+    vector<vector<string>>userInfo;
+    string info;
+
+    while(getline(fin, info)){
+        vector<string>temp;
+        string line;
+        stringstream ss(info);
+
+        while(getline(ss, line, ',')){
+            temp.push_back(line);
+        }
+
+        userInfo.push_back(temp);
+    }
+
+    fin.close();
+
+    while(true){
+        cout << "==============================================================================\n";
+        cout << "| No  | File Index | User ID   |   Time   |    Date    | Monthly Pass Status |\n";
+        cout << "==============================================================================\n";
+        
+        int indexT = 1;
+        int indexF = 1;
+        int sID_col = 3;
+        int subStat_col = 8;
+        int passStat_col = 11;
+
+        for(size_t i = 1; i != userInfo.size() - 1; i++){
+            string submission = userInfo[i][subStat_col];
+            
+            if(submission.find("Submitted_") != string::npos){
+                string temp = submission.substr(10);
+                string date = temp.substr(0,10);
+                string time = temp.substr(11,8);
+
+                string status = userInfo[i][passStat_col];
+                size_t pos = status.find('_');
+                if(pos != string::npos){
+                    status = status.substr(0, pos);
+                }
+            
+                
+                cout << "| " << left << setw(3) << indexT << " "
+                     << "| " << setw(10) << indexF << " "
+                     << "| " << setw(10) << userInfo[i][sID_col]
+                     << "| " << setw(9) << time
+                     << "| " << setw(11) << date
+                     << "| " << setw(20) << status << "|\n"; 
+                
+                indexT++;
+            }
+            indexF++;
+        }
+        cout << "==============================================================================\n";
+        cout << "==============================================================================\n";
+        cout << "|(1) Approve monthly pass                                                    |\n" ;
+        cout << "|(2) Reject monthly pass                                                     |\n";   
+        cout << "|(3) Back to admin menu                                                      |\n";
+        cout << "==============================================================================\n";
+
+        cout << "Enter your choice: ";
+        
+        string reason;
+
+        int choice, Findex;
+        cin >> choice;
+
+        switch (choice) {
+            case 1:
+                cout << "Enter user file index number to approve: ";
+                cin >> Findex;
+                if (Findex > 0 && Findex <= indexF) {
+                    userInfo[Findex][subStat_col] = "Approved_" + datetime();
+                    cout << "Monthly pass approved for user:\n";
+                    cout << "==============================================================================\n";
+                    cout << setw(77) << left << "|User ID: " + userInfo[Findex][sID_col] << right << "|" << '\n';
+                    cout << setw(77) << left << "|Date and Time: " + datetime() << right << "|" << '\n';
+                    cout << setw(77) << left << "|Status: Approved" << right << "|" << '\n';
+                    cout << "==============================================================================\n";
+                    system("pause");
+                    system("cls");
+                    continue;
+                }
+                else {
+                    system("cls");
+                    cout << "Invalid user index file number, please try again.\n";
+                    cin.clear();            
+                    cin.ignore();
+                    continue;
+                }
+            case 2:
+                cout << "Enter user file index number to reject: ";
+                cin >> Findex;
+                if (Findex > 0 && Findex <= indexF) {
+                    userInfo[Findex][subStat_col] = "Rejected_" + datetime();
+                    cout << "Enter reason for rejection: ";
+                    cin.ignore();
+                    getline(cin, reason);
+                    cout << "Monthly pass rejected for user:\n";
+                    cout << "==============================================================================\n";
+                    cout << setw(77) << left << "|User ID: " + userInfo[Findex][sID_col] << right << "|" << '\n';
+                    cout << setw(77) << left << "|Date and Time: " + datetime() << right << "|" << '\n';
+                    cout << setw(77) << left << "|Status: Rejected" << right << "|" << '\n';
+                    cout << setw(77) << left << "|Reason: " + reason << right << "|" << '\n';
+                    cout << "==============================================================================\n";
+                    system("pause");
+                    system("cls");
+                    continue;
+                } 
+                else {
+                    system("cls");
+                    cout << "Invalid user index file number, please try again.\n";
+                    cin.clear();            
+                    cin.ignore();
+                    continue;
+                }
+            case 3:
+                system("cls");
+                adminMenu();
+                break;
+            default:
+                cin.clear();
+                cin.ignore();
+                cout << "Invalid choice. Please try again.\n";
+                continue;
+        }
+        break;
+    }        
+}
+
+
+
+    
+    
     /*string reason;
     PassStatus ps[100]; 
     int n = 0;
@@ -26,71 +184,15 @@ void statusMenu() {
                >> ps[n].day >> ps[n].month >> ps[n].year >> ps[n].status) {
         n++;
     }
-    fin.close();*/
-    User user;
-    while (true) {
-        ifstream fin("data.txt");
-        ofstream fout("temp.txt");
-
-        if(!fin.is_open() || !fout.is_open()){
-            cerr << "Error opening file.\n";
-            return;
-        }
-
-        string info;
-        vector<string>userInfo;
-
-        getline(fin, info);
-
-        while(getline(fin, info)){
-            stringstream ss(info);
-            string token;
+    fin.close();
     
-            getline(ss, user.username, ',');
-            getline(ss, user.password, ',');
-            getline(ss, user.name, ',');
-            getline(ss, user.studentId, ',');
-            getline(ss, user.icNo, ',');
-            getline(ss, user.contact, ',');
-            getline(ss, user.faculty, ',');
-            getline(ss, user.carPlate, ',');
-            getline(ss, user.submissionStatus, ',');
+    while (true) {
+        if()
 
-            getline(ss, token, ',');
-            user.paymentAmount = stod(token);
-
-            getline(ss, user.passStatus, ',');
-            getline(ss, user.username, ',');
-
-            userInfo.push_back(info);
-        }
-
-        fin.close();
-        
         cout << "================================================================\n";
         cout << "| No | User ID   |   Time   |    Date    | Monthly Pass Status |\n";
         cout << "================================================================\n";
-
-        bool foundSubmission = false;
-
-    do{
-        foundSubmission = true;
-
-        if(foundSubmission == true){
-            cout << "======================================================";
-            cout << "Name: " << user.name << '\n';
-            cout << "ID: " << user.studentId << '\n';
-            cout << "Car Plate: " << user.carPlate << '\n';
-            cout << "Submission Status: " << user.submissionStatus << '\n';
-            cout << "======================================================";
-
-            
-        }
-        cin.get();
-    }while(user.submissionStatus.find("Submitted_") != string::npos);
-    }
-}
-        /*if()
+  
         for (int i = 0; i < n; i++) {
             cout << "| " << setw(2) << i+1 
                  << "| " << setw(8) << ps[i].studentId 
@@ -170,9 +272,9 @@ void statusMenu() {
 
        
     }
-}
+}*/
 
-ifstream fin("data.txt");
+/*ifstream fin("data.txt");
 ofstream fout("temp.txt");
 
 if(!fin.is_open() || !fout.is_open()){
