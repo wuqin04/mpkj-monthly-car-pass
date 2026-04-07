@@ -102,7 +102,7 @@ void createInfo(User &user) {
         break;
     }
 
-    while (true) {
+    while (true) {  
         cout << "Enter Faculty (eg: LKC FES): ";
         getline(cin, user.faculty);
         if (!validateFaculty(user.faculty)) {
