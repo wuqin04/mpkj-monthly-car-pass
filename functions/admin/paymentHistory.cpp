@@ -55,11 +55,14 @@ vector<Payment> loadPayments() {
         p.contact = contact;
         p.faculty = faculty;
 
-        try {
-            p.amount = stod(paymentAmountStr);
-        } catch (...) {
-            p.amount = 0.0;
+        if (!paymentAmountStr.empty()) {
+            try {
+                p.amount = stod(paymentAmountStr);
+            } catch (...) {
+                p.amount = 0.0;
+            }
         }
+        
         if (paymentStatus.find("Paid_") == string::npos || p.amount <= 0) {
             continue;
         }

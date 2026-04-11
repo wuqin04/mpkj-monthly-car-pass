@@ -39,7 +39,7 @@ void adminMenu() {
                 statusMenu();
                 break;
             case 3:               
-                selectReport();
+                reportMenu();
                 break;
             case 4:
                 system("cls");

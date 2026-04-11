@@ -52,7 +52,8 @@ void mainMenu() {
 
 		// convert string into double data type
         getline(ss, token, ',');
-        user.paymentAmount = stod(token);
+		if (!token.empty())
+        	user.paymentAmount = stod(token);
 
         getline(ss, user.paymentStatus, ',');
         getline(ss, user.passStatus, ',');
