@@ -14,14 +14,6 @@
 
 using namespace std;
 
-void selectMonth();
-void selectYear();
-void selectFaculty();
-void reportMenu(int selectedMonth);
-void reportMenuByYear(int selectedYear);
-void reportMenuByFaculty(const string &selectedFaculty);
-void printReport(const string &title, const string &filterType, const string &filterValue);
-
 //extract date from data.txt
 void extractStatusDate(const string& input, string& status, string& date) {
     if (input == "-" || input.empty()) {
@@ -378,8 +370,4 @@ void reportMenuByFaculty(const string &selectedFaculty) {
         default: 
             cout << "Invalid input, try again.\n"; reportMenuByFaculty(selectedFaculty); break;
     }
-}
-
-void reportMenu() {
-    selectReport();
 }

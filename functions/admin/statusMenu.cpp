@@ -76,7 +76,6 @@ void statusMenu() {
 
         int indexT = 1;
         int indexF = 1;
-<<<<<<< HEAD
         int sID_col = 3;
         int subStat_col = 8;
         int passStat_col = 11;
@@ -114,11 +113,6 @@ void statusMenu() {
                 indexT++;
             }
             indexF++;
-=======
-
-        if(run == true && noKeyFound){
-                cout << "There are no pending submissions to review.\n";
->>>>>>> 1ec53a95c5bb7ecb8bef3d62a05724addc1d86dd
         }
 
         else{
@@ -313,7 +307,6 @@ void statusMenu() {
                     cin.clear();            
                     cin.ignore();
                     continue;
-<<<<<<< HEAD
                 }
             case 4:
                 system("cls");
@@ -339,15 +332,6 @@ void statusMenu() {
     continue;
 }
         default:
-=======
-                }}
-            case 3:
-                system("cls");
-                adminMenu();
-                break;
-            default:
-                system("cls");
->>>>>>> 1ec53a95c5bb7ecb8bef3d62a05724addc1d86dd
                 cin.clear();
                 cin.ignore();
                 system("cls");
