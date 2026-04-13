@@ -11,9 +11,9 @@ struct Pass{
     string passStatus;
     string applyStatus;
 };
-
+struct UserRecord;
 void getPassStatus();
-void infoComplete(User &user);
+void infoComplete(User &user, UserRecord users[], int count, int index);
 void passRenewalMenu(User &user);
 void passChoice();
 
