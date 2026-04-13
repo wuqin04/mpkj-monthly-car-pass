@@ -173,7 +173,7 @@ void statusMenu() {
                         fout << userInfo[i][passStat_col] << "," << '\n';
                     }
                     fout.close();
-                    
+
                     ifstream tempIn(tempFileName);
                     ofstream dataOut(readFileName, ios::trunc);
                     if (tempIn.is_open() && dataOut.is_open()) {
@@ -186,7 +186,15 @@ void statusMenu() {
                         remove(tempFileName);
                     } else {
                         system("cls");
-                        cerr << "Error updating file.\n";
+                        if (!tempIn.is_open()) {
+                            cerr << "Error: Cannot open temp file for reading.\n";
+                        } else if (!dataOut.is_open()) {
+                            cerr << "Error: Cannot open data file for writing.\n";
+                        } else {
+                            cerr << "Error: Unknown file operation error.\n";
+                        }
+                        tempIn.close();
+                        dataOut.close();
                         continue;
                     }
                     system("pause");
@@ -246,7 +254,7 @@ void statusMenu() {
                         fout << userInfo[i][passStat_col] << "," << '\n';
                     }
                     fout.close();
-                    
+
                     ifstream tempIn(tempFileName);
                     ofstream dataOut(readFileName, ios::trunc);
                     if (tempIn.is_open() && dataOut.is_open()) {
@@ -259,7 +267,15 @@ void statusMenu() {
                         remove(tempFileName);
                     } else {
                         system("cls");
-                        cerr << "Error updating file.\n";
+                        if (!tempIn.is_open()) {
+                            cerr << "Error: Cannot open temp file for reading.\n";
+                        } else if (!dataOut.is_open()) {
+                            cerr << "Error: Cannot open data file for writing.\n";
+                        } else {
+                            cerr << "Error: Unknown file operation error.\n";
+                        }
+                        tempIn.close();
+                        dataOut.close();
                         continue;
                     }
                     system("pause");
