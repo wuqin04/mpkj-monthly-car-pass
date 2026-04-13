@@ -67,7 +67,15 @@ void statusMenu() {
         int sID_col = 3;
         int subStat_col = 8;
         int passStat_col = 11;
+        int activeCount = 0;
 
+    for (size_t i = 1; i < userInfo.size(); i++) {
+    string passStatus = userInfo[i][passStat_col];
+
+    if (passStatus.find("Active_") != string::npos) {
+        activeCount++;
+    }
+}
         for(size_t i = 1; i != userInfo.size() - 1; i++){
             string submission = userInfo[i][subStat_col];
             
@@ -98,7 +106,8 @@ void statusMenu() {
         cout << "==============================================================================\n";
         cout << "|(1) Approve monthly pass                                                    |\n" ;
         cout << "|(2) Reject monthly pass                                                     |\n";   
-        cout << "|(3) Back to admin menu                                                      |\n";
+        cout << "|(3) View total active passes                                                |\n";                           
+        cout << "|(4) Back to admin menu                                                      |\n";                                                  
         cout << "==============================================================================\n";
 
         cout << "Enter your choice: ";
@@ -157,15 +166,36 @@ void statusMenu() {
                     cin.ignore();
                     continue;
                 }
-            case 3:
+            case 4:
                 system("cls");
                 adminMenu();
                 break;
-            default:
+            
+                case 3: {
+                int activeCount = 0;
+
+                for (size_t i = 1; i < userInfo.size(); i++) {
+        string passStatus = userInfo[i][passStat_col];
+
+        if (passStatus.find("Active_") != string::npos) {
+            activeCount++;
+        }
+    }
+
+    cout << "Total Active Pass: " << activeCount << endl;
+    cout << "Press Enter to continue...";
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cin.get();
+    system("cls");
+    continue;
+}
+        default:
                 cin.clear();
                 cin.ignore();
+                system("cls");
                 cout << "Invalid choice. Please try again.\n";
                 continue;
+
         }
         break;
     }        

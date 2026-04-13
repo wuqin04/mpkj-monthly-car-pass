@@ -10,8 +10,11 @@ using namespace std;
 
 struct Payment {
     string studentId;
+    string name;
+    string IC;
+    string contact;
     double amount;
-    string date;       
+    string date;
     string faculty;
 };
 
@@ -47,13 +50,19 @@ vector<Payment> loadPayments() {
 
         Payment p;
         p.studentId = studentID;
+        p.name = name;
+        p.IC = ICNo;
+        p.contact = contact;
+        p.faculty = faculty;
 
         try {
             p.amount = stod(paymentAmountStr);
         } catch (...) {
             p.amount = 0.0;
         }
-
+        if (paymentStatus.find("Paid_") == string::npos || p.amount <= 0) {
+            continue;
+        }
         size_t pos = paymentStatus.find('_');
         if (pos != string::npos && pos + 1 < paymentStatus.size()) {
             p.date = paymentStatus.substr(pos + 1);
@@ -100,52 +109,63 @@ void paymentHistoryMenu() {
         }
 
         if (choice == 1) {
-            string inputId;
-            cout << "Enter User ID to view payment history: ";
-            cin >> inputId;
+    int no;
+    cout << "Enter No. to view payment details: ";
 
-            bool found = false;
-            for (auto &p : payments) {
-                if (p.studentId == inputId) {
-                    found = true;
-                    system("cls");
-                    cout << "===========================================================\n";
-                    cout << "| User ID : " << p.studentId << endl;
-                    cout << "| Amount  : RM " << fixed << setprecision(2) << p.amount << endl;
-                    cout << "| Date    : " << p.date << endl;
-                    cout << "| Faculty : " << p.faculty << endl;
-                    cout << "===========================================================\n";
-                    cout << "| (1) Back to payment history menu                      |\n";
-                    cout << "===========================================================\n";
-                    int subChoice;
-                    cout << "Choose an option: ";
-                    while(true){
-                    if (!(cin >> subChoice)) {
-                        cin.clear();
-                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                        continue;
-                    }
-                    if (subChoice == 1) {
-                        system("cls");
-                        break;
-                    } else {
-                        cout << "Invalid input, try again.\n";
-                        cout << "Choose an option: ";
-                    }
-                }}
+    if (!(cin >> no)) {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        continue;
+    }
+
+    if (no >= 1 && no <= (int)payments.size()) {
+        Payment &p = payments[no - 1];
+
+        system("cls");
+        cout << "===========================================================\n";
+        cout << "| User ID : " << p.studentId << endl;
+        cout << "| Name    : " << p.name << endl;
+        cout << "| IC      : " << p.IC << endl;
+        cout << "| Contact : " << p.contact << endl;
+        cout << "| Faculty : " << p.faculty << endl;
+        cout << "| Amount  : RM " << fixed << setprecision(2) << p.amount << endl;
+        cout << "| Date    : " << p.date << endl;
+        cout << "===========================================================\n";
+        cout << "| (1) Back to payment history menu                      |\n";
+        cout << "===========================================================\n";
+
+        int subChoice;
+        cout << "Choose an option: ";
+
+        while (true) {
+            if (!(cin >> subChoice)) {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                continue;
             }
-
-            if (!found) {
+            if (subChoice == 1) {
                 system("cls");
-                cout << "User ID not found.\n";
+                break;
+            } else {
+                cout << "Invalid input, try again.\n";
+                cout << "Choose an option: ";
             }
+        }
 
-        } else if (choice == 2) {
+    } else {   // ✅ 这个 else 属于 if (no...)
+        system("cls");
+        cout << "Invalid No.\n";
+    }
+}
+
+         else if (choice == 2) {
             system("cls");
             adminMenu();
             return;
         } else {
+            system("cls");
             cout << "Invalid input, try again.\n";
+            
         }
     }
 }
