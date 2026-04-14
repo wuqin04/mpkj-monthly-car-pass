@@ -272,6 +272,7 @@ void passRenewalMenu(User &user) {
         else {
             cout << "|(1) status menu\n";
             cout << "|(2) back\n";
+            cout << "=====================================================\n";
             cin >> choice;
 
             if(choice == 1) 
