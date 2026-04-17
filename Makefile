@@ -1,15 +1,14 @@
 # Compiler settings
 CXX = g++
-CXXFLAGS = -Wall -Wextra -std=c++17 -Iheaders
+# Added -Isrc to ensure the compiler can find system.h inside the src folder
+CXXFLAGS = -Wall -Wextra -std=c++98 -Iheaders -Isrc
 
 # The name of your final executable
 TARGET = mpkj_car_pass
 
-# Find main.cpp and .cpp files explicitly in your known directories
+# Find main.cpp and .cpp files explicitly (Removed system.h)
 SRCS = main.cpp \
-       $(wildcard functions/*.cpp) \
-       $(wildcard functions/admin/*.cpp) \
-       $(wildcard functions/user/*.cpp)
+       $(wildcard src/*.cpp)
 
 # Generate a list of object files by replacing .cpp with .o
 OBJS = $(SRCS:.cpp=.o)
