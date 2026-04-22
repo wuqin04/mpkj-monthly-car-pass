@@ -355,7 +355,7 @@ void selectFaculty() {
         if (facultyChoice == 0) {
             adminMenu();
             break;
-        } else if (facultyChoice >= 1 && facultyChoice <= 4) {
+        } else if (facultyChoice >= 1 && facultyChoice <= 6) {
             string faculties[] = {"FAM","FMHS","FCI","CFS","ICS","LKCFES"};
             reportMenuByFaculty(faculties[facultyChoice - 1]);
             break;
