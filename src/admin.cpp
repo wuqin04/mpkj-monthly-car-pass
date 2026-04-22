@@ -336,7 +336,9 @@ void selectFaculty() {
         cout << "|(1) FAM                                            |\n";
         cout << "|(2) FMHS                                           |\n";
         cout << "|(3) FCI                                            |\n";
-        cout << "|(4) LKC FES                                        |\n";
+        cout << "|(4) CFS                                            |\n";
+        cout << "|(5) ICS                                            |\n";
+        cout << "|(6) LKC FES                                        |\n";
         cout << "|(0) Back to admin menu                             |\n";
         cout << "=====================================================\n";
         cout << "Choose a faculty: ";
@@ -354,7 +356,7 @@ void selectFaculty() {
             adminMenu();
             break;
         } else if (facultyChoice >= 1 && facultyChoice <= 4) {
-            string faculties[] = {"FAM","FMHS","FCI","LKCFES"};
+            string faculties[] = {"FAM","FMHS","FCI","CFS","ICS","LKCFES"};
             reportMenuByFaculty(faculties[facultyChoice - 1]);
             break;
         } else {

@@ -85,7 +85,6 @@ bool findUser(const string &username, User users[], int count, int &index);
 void saveAllUsers(User users[], int count);
 void clearBuffer();
 void viewStatusMenu(User &user, User users[], int count);
-void transactionMenu(User &user);
 void paymentMenu(User &user, User users[], int count);
 void infoComplete(User &user, User users[], int count);
 void passRenewalMenu(User &user, User users[], int count);

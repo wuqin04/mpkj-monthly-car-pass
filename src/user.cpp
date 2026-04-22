@@ -495,8 +495,8 @@ bool validateFaculty(string &faculty) {
         faculty[i] = toupper(faculty[i]);
     }
 
-    if (faculty == "LKC FES" || faculty == "LKCFES" || faculty == "FMHS" 
-        || faculty == "FAM" || faculty == "FCI")
+    if (faculty == "LKC FES" || faculty == "LKCFES" || faculty == "FMHS" || faculty == "CFS"
+        || faculty == "FAM" || faculty == "FCI" || faculty == "ICS")
         return true;
     return false;
 }
